@@ -144,7 +144,7 @@ export function ServicesSection() {
                       | full (wide) |
                       | half | half |
         */}
-        <div className="grid grid-cols-1 items-start gap-0 sm:grid-cols-2">
+        <div className="grid grid-cols-1 items-start gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2">
           {services.map((service, i) => (
             <motion.div
               key={service.title}

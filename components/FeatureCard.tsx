@@ -139,7 +139,7 @@ export default function FeatureCard({
         <div className="flex flex-row flex-wrap items-center gap-3 pt-3 sm:pt-2.5">
           <Link
             href={primaryCta.href}
-            className="inline-flex w-fit items-center gap-2 rounded-full border-0 bg-gradient-to-r from-primary to-tertiary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98] dark:hover:opacity-80 xl:px-6 xl:py-3 xl:text-[15px]"
+            className="inline-flex w-fit items-center gap-2 rounded-full border-0 bg-gradient-to-r from-primary to-tertiary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98] dark:hover:opacity-80 xl:px-6 xl:py-3 xl:text-[15px] h-[44px] sm:h-auto"
           >
             {primaryCta.text}
             <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2.25} aria-hidden />
@@ -147,7 +147,7 @@ export default function FeatureCard({
           {secondaryCta && (
             <Link
               href={secondaryCta.href}
-              className="inline-flex h-[46px] w-fit items-center gap-2 rounded-xl border border-border bg-background/60 px-4 text-sm font-semibold text-card-foreground transition hover:bg-background/90"
+              className="inline-flex h-[44px] w-fit items-center gap-2 rounded-xl border border-border bg-background/60 px-4 text-sm font-semibold text-card-foreground transition hover:bg-background/90"
             >
               {secondaryCta.text}
             </Link>
