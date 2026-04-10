@@ -1,0 +1,492 @@
+@import 'tailwindcss';
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TAILWIND CSS V4 - CIPHERX BRAND SYSTEM
+   Global CSS infrastructure using pure Tailwind utilities and design tokens
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ─────────────────────────────────────────────────────────────────────────
+     BRAND — paper shell + forest→lime CTA (#1B8A44 → #78C142)
+     Hex refs: bg #f5f3ee, scrim #ebe8e0, border #dedbd2, ink #111, muted #5f6470
+     ───────────────────────────────────────────────────────────────────────── */
+
+  /* Primary — forest green (CTA gradient start, ref #1B8A44) */
+  --color-primary: #1b8a44;
+  --color-primary-foreground: #ffffff;
+  --color-primary-50: oklch(0.96 0.02 148);
+  --color-primary-100: oklch(0.92 0.04 148);
+  --color-primary-200: oklch(0.85 0.08 148);
+  --color-primary-300: oklch(0.74 0.11 148);
+  --color-primary-400: oklch(0.62 0.125 148);
+  --color-primary-500: oklch(0.55 0.13 148);
+  --color-primary-600: #1b8a44;
+  --color-primary-700: oklch(0.42 0.11 148);
+  --color-primary-800: oklch(0.35 0.09 148);
+  --color-primary-900: oklch(0.29 0.07 148);
+  --color-primary-950: oklch(0.22 0.05 148);
+
+  /* Secondary — warm paper scrim (Lexend from-secondary, subtle panels) */
+  --color-secondary: oklch(0.93 0.008 88);
+  --color-secondary-foreground: oklch(0.22 0.02 265);
+  --color-secondary-50: oklch(0.98 0.004 88);
+  --color-secondary-100: oklch(0.96 0.006 88);
+  --color-secondary-200: oklch(0.93 0.008 88);
+  --color-secondary-300: oklch(0.89 0.010 88);
+  --color-secondary-400: oklch(0.82 0.010 88);
+  --color-secondary-500: oklch(0.72 0.010 88);
+  --color-secondary-600: oklch(0.58 0.008 88);
+  --color-secondary-700: oklch(0.45 0.006 88);
+  --color-secondary-800: oklch(0.35 0.005 88);
+  --color-secondary-900: oklch(0.25 0.004 88);
+  --color-secondary-950: oklch(0.18 0.003 88);
+
+  /* Accent — teal step for gradients (between emerald & cyan) */
+  --color-accent: oklch(0.62 0.11 175);
+  --color-accent-foreground: oklch(1 0 0);
+  --color-accent-50: oklch(0.97 0.04 175);
+  --color-accent-100: oklch(0.93 0.07 175);
+  --color-accent-200: oklch(0.86 0.10 175);
+  --color-accent-300: oklch(0.76 0.11 175);
+  --color-accent-400: oklch(0.68 0.11 175);
+  --color-accent-500: oklch(0.62 0.11 175);
+  --color-accent-600: oklch(0.54 0.10 175);
+  --color-accent-700: oklch(0.46 0.09 175);
+  --color-accent-800: oklch(0.38 0.07 175);
+  --color-accent-900: oklch(0.30 0.05 175);
+
+  /* Tertiary — lime end of pill CTA gradient (ref #78C142) */
+  --color-tertiary: #78c142;
+  --color-tertiary-foreground: #ffffff;
+
+  /* Neutral — warm gray (paper family) */
+  --color-neutral-50: oklch(0.99 0.003 88);
+  --color-neutral-100: oklch(0.97 0.005 88);
+  --color-neutral-200: oklch(0.93 0.007 88);
+  --color-neutral-300: oklch(0.88 0.008 88);
+  --color-neutral-400: oklch(0.75 0.012 88);
+  --color-neutral-500: oklch(0.58 0.014 252);
+  --color-neutral-600: oklch(0.45 0.018 252);
+  --color-neutral-700: oklch(0.35 0.020 265);
+  --color-neutral-800: oklch(0.25 0.018 265);
+  --color-neutral-900: oklch(0.20 0.015 265);
+  --color-neutral-950: oklch(0.14 0.012 265);
+
+  /* Page & ink */
+  --color-background: #ffffff;
+  --color-foreground: oklch(0.205 0.006 265);
+
+  /* Surfaces */
+  --color-card: oklch(0.965 0.006 88);
+  --color-card-foreground: oklch(0.205 0.006 265);
+  --color-popover: oklch(0.99 0.004 88);
+  --color-popover-foreground: oklch(0.205 0.006 265);
+
+  /* Muted — slate body (#5f6470) on soft paper strip */
+  --color-muted: oklch(0.935 0.007 88);
+  --color-muted-foreground: oklch(0.45 0.022 252);
+
+  /* Destructive */
+  --color-destructive: oklch(0.55 0.20 25);
+  --color-destructive-foreground: oklch(0.99 0 0);
+
+  /* UI chrome */
+  --color-border: oklch(0.898 0.009 88);
+  --color-input: oklch(0.928 0.008 88);
+  --color-ring: #1b8a44;
+
+  /* Charts — forest / lime family */
+  --color-chart-1: #1b8a44;
+  --color-chart-2: #78c142;
+  --color-chart-3: oklch(0.62 0.13 142);
+  --color-chart-4: oklch(0.48 0.11 148);
+  --color-chart-5: oklch(0.72 0.15 125);
+
+  /* Sidebar — paper stack */
+  --color-sidebar: oklch(0.968 0.006 88);
+  --color-sidebar-foreground: oklch(0.22 0.02 265);
+  --color-sidebar-primary: #1b8a44;
+  --color-sidebar-primary-foreground: oklch(1 0 0);
+  --color-sidebar-accent: oklch(0.94 0.007 88);
+  --color-sidebar-accent-foreground: oklch(0.22 0.02 265);
+  --color-sidebar-border: oklch(0.898 0.009 88);
+  --color-sidebar-ring: #1b8a44;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     TYPOGRAPHY
+     ───────────────────────────────────────────────────────────────────────── */
+  /* Plus Jakarta Sans: modern, approachable, strong for web UI + body copy */
+  --font-sans: var(--font-plus-jakarta), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     SPACING & SIZING
+     ───────────────────────────────────────────────────────────────────────── */
+  --radius: 1rem;
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     ANIMATION & TRANSITIONS
+     ───────────────────────────────────────────────────────────────────────── */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --timing-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --timing-ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE THEME OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+@dark {
+  --color-background: oklch(0.14 0.012 265);
+  --color-foreground: oklch(0.94 0.006 265);
+  --color-card: oklch(0.18 0.014 265);
+  --color-card-foreground: oklch(0.94 0.006 265);
+  --color-popover: oklch(0.18 0.014 265);
+  --color-popover-foreground: oklch(0.94 0.006 265);
+  --color-muted: oklch(0.24 0.014 265);
+  --color-muted-foreground: oklch(0.72 0.014 265);
+  --color-border: oklch(0.30 0.014 265);
+  --color-input: oklch(0.22 0.014 265);
+  --color-secondary: oklch(0.24 0.014 265);
+  --color-secondary-foreground: oklch(0.94 0.006 265);
+  --color-primary-foreground: oklch(1 0 0);
+  --color-accent-foreground: oklch(1 0 0);
+  --color-tertiary: #85cd4e;
+  --color-tertiary-foreground: #ffffff;
+  --color-sidebar: oklch(0.16 0.012 265);
+  --color-sidebar-foreground: oklch(0.92 0.006 265);
+  --color-sidebar-accent: oklch(0.22 0.014 265);
+  --color-sidebar-border: oklch(0.30 0.014 265);
+  --color-destructive: oklch(0.50 0.18 25);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE STYLES - Using Tailwind @layer
+   ═══════════════════════════════════════════════════════════════════════════ */
+@layer base {
+  :root {
+    --site-max-width: 1450px;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Smooth theme transitions */
+  *:not([style*="transform"]):not([style*="opacity"]),
+  *::before,
+  *::after {
+    @apply transition-colors duration-200;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground rounded-full opacity-50 hover:bg-foreground;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgb(27 138 68 / 0.22);
+    color: oklch(0.205 0.006 265);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPONENT LAYER - Reusable Tailwind utilities
+   ═══════════════════════════════════════════════════════════════════════════ */
+@layer components {
+  /* ─────────────────────────────────────────────────────────────────────────
+     LAYOUT UTILITIES
+     ───────────────────────────────────────────────────────────────────────── */
+  /* Horizontal padding + max width aligned with hero (container-full-wide) */
+  .container-narrow {
+    @apply max-w-3xl mx-auto px-3 sm:px-4 md:px-5 lg:px-6;
+  }
+
+  .container-base {
+    @apply max-w-5xl mx-auto px-3 sm:px-4 md:px-5 lg:px-6;
+  }
+
+  .container-wide {
+    @apply w-full mx-auto px-3 sm:px-4 md:px-5 lg:px-6;
+    max-width: var(--site-max-width);
+  }
+
+  .container-full {
+    @apply w-full mx-auto px-3 sm:px-4 md:px-5 lg:px-6;
+    max-width: var(--site-max-width);
+  }
+
+  .container-full-wide {
+    @apply w-full mx-auto px-3 sm:px-4 md:px-5 lg:px-6;
+    max-width: var(--site-max-width);
+  }
+
+  /* Section padding - responsive */
+  .section-padding-xs {
+    @apply py-6 sm:py-8 md:py-10;
+  }
+
+  .section-padding-sm {
+    @apply py-8 sm:py-12 md:py-14 lg:py-16;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+
+  .section-padding-lg {
+    @apply py-16 sm:py-20 md:py-24 lg:py-32;
+  }
+
+  .section-padding-xl {
+    @apply py-20 sm:py-24 md:py-32 lg:py-40;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     TYPOGRAPHY UTILITIES
+     ───────────────────────────────────────────────────────────────────────── */
+  .section-header {
+    @apply text-center mb-8 sm:mb-10 md:mb-12 lg:mb-14;
+  }
+
+  .heading-hero {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1];
+  }
+
+  .heading-lg {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  .heading-md {
+    @apply text-xl sm:text-2xl font-bold tracking-tight;
+  }
+
+  .heading-sm {
+    @apply text-lg font-semibold tracking-tight;
+  }
+
+  .text-balance-auto {
+    @apply text-balance;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     CARD & SURFACE UTILITIES
+     ───────────────────────────────────────────────────────────────────────── */
+  .card-base {
+    @apply rounded-lg border border-border bg-card shadow-sm;
+  }
+
+  .card-base-lg {
+    @apply rounded-xl border border-border bg-card shadow-sm;
+  }
+
+  .card-hover {
+    @apply rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md hover:border-border/60;
+  }
+
+  .card-hover-lg {
+    @apply rounded-xl border border-border bg-card shadow-sm transition-all hover:shadow-md hover:border-border/60;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     BUTTON UTILITIES
+     ───────────────────────────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-primary text-primary-foreground rounded-lg text-sm sm:text-base font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-secondary text-secondary-foreground rounded-lg text-sm sm:text-base font-semibold hover:bg-secondary/80 active:scale-[0.98] transition-all;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 border border-foreground/20 text-foreground rounded-lg text-sm sm:text-base font-semibold hover:border-foreground/40 active:scale-[0.98] transition-all;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 text-foreground rounded-lg text-sm sm:text-base font-semibold hover:bg-foreground/5 active:scale-[0.98] transition-all;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     BADGE & LABEL UTILITIES
+     ───────────────────────────────────────────────────────────────────────── */
+  .badge-primary {
+    @apply inline-block px-2.5 py-1 sm:px-3 rounded-full text-[11px] sm:text-xs font-semibold bg-primary/10 text-primary;
+  }
+
+  .badge-secondary {
+    @apply inline-block px-2.5 py-1 sm:px-3 rounded-full text-[11px] sm:text-xs font-semibold bg-secondary/10 text-secondary-foreground;
+  }
+
+  .badge-accent {
+    @apply inline-block px-2.5 py-1 sm:px-3 rounded-full text-[11px] sm:text-xs font-semibold bg-accent/10 text-accent;
+  }
+
+  .badge-destructive {
+    @apply inline-block px-2.5 py-1 sm:px-3 rounded-full text-[11px] sm:text-xs font-semibold bg-destructive/10 text-destructive;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     FORM INPUT UTILITIES
+     ───────────────────────────────────────────────────────────────────────── */
+  .input-base {
+    @apply w-full px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg border border-foreground/10 bg-card text-foreground text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all;
+  }
+
+  .input-error {
+    @apply focus:ring-destructive/50 border-destructive/50;
+  }
+
+  /* ──────────────────────���──────────────────────────────────────────────────
+     BACKGROUND PATTERNS & EFFECTS
+     ───────────────────────────────────────────────────────────────────────── */
+  .bg-dot-pattern {
+    @apply bg-center;
+    background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .bg-teal-radial {
+    background: radial-gradient(ellipse 80% 50% at 50% 40%, rgb(27 138 68 / 0.09) 0%, transparent 70%);
+  }
+
+  .glow-teal {
+    background: radial-gradient(circle, rgb(27 138 68 / 0.45) 0%, transparent 70%);
+  }
+
+  .glow-primary {
+    background: radial-gradient(circle, rgb(27 138 68 / 0.45) 0%, transparent 70%);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     SHADOW UTILITIES
+     ───────────────────────────────────────────────────────────────────────── */
+  .shadow-soft {
+    box-shadow: 0 1px 2px oklch(0.25 0.02 265 / 0.05), 0 4px 14px oklch(0.25 0.02 265 / 0.06);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: 0 2px 6px oklch(0.25 0.02 265 / 0.06), 0 14px 36px oklch(0.25 0.02 265 / 0.09);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     UTILITY CLASSES
+     ───────────────────────────────────────────────────────────────────────── */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .grid-gap {
+    @apply gap-4 sm:gap-5 md:gap-6;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .step-number {
+    @apply text-xs font-semibold text-muted-foreground/60 tracking-widest uppercase;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS LAYER - Tailwind animations
+   ═══════════════════════════════════════════════════════════════════════════ */
+@layer utilities {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-down {
+    from {
+      opacity: 0;
+      transform: translateY(-16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out;
+  }
+
+  .animate-fade-down {
+    animation: fade-down 0.6s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s ease-out;
+  }
+}
