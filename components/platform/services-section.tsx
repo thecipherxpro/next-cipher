@@ -41,10 +41,7 @@ const services: Array<{
     secondaryCTA: { text: "Get Security Consultation", href: "#consultation" },
     layout: "left-content",
     wide: true,
-    contentClassName: "sm:w-[642px] sm:max-w-[642px]",
-    innerGridClassName: "sm:h-[374px]",
-    imageFigureClassName: "bg-muted/20 sm:h-[374px] sm:max-h-[374px]",
-    imageShellClassName: "sm:max-h-[374px]",
+    innerGridClassName: "sm:min-h-[360px]",
     imageMediaClassName: "p-2 sm:p-4",
     heroImage: {
       src: "/services-cybersecurity.png",
@@ -85,6 +82,7 @@ const services: Array<{
     secondaryCTA: { text: "Discuss My App Idea", href: "#consultation" },
     layout: "left-content",
     wide: true,
+    innerGridClassName: "sm:min-h-[360px]",
   },
   {
     title: "AI Solutions",
@@ -144,7 +142,7 @@ export function ServicesSection() {
                       | full (wide) |
                       | half | half |
         */}
-        <div className="grid grid-cols-1 items-start gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 md:gap-7 lg:gap-8">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -154,7 +152,7 @@ export function ServicesSection() {
               viewport={{ once: true, margin: "-40px" }}
               custom={i}
               whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
-              className={cn("min-w-0 w-full self-start", service.wide && "sm:col-span-2")}
+              className={cn("min-w-0 w-full", service.wide && "sm:col-span-2")}
             >
               <FeatureCard
                 title={service.title}
