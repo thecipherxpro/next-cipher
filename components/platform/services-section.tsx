@@ -130,6 +130,12 @@ const services: Array<{
     secondaryCTA: { text: "Ask About AI", href: "#consultation" },
     layout: "top-content",
     innerGridClassName: TOP_SERVICE_CARD_GRID_H,
+    heroImage: {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Copy%20of%20Untitled%20%28415%20x%20393%20px%29%20%285%29-FF8IXMyzjfdCijNu1QuoC8hOfdmN5Y.png",
+      alt: "AI Solutions illustration with AI icons and chat interface",
+      width: 415,
+      height: 393,
+    },
   },
   {
     title: "Creative Services",
