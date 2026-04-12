@@ -134,10 +134,10 @@ export default function FeatureCard({
       </div>
 
       {/* CTA row — consistent height & font across both buttons */}
-      <div className="mt-6 flex flex-row flex-wrap items-center gap-3">
+      <div className="mt-6 flex flex-row flex-wrap items-center gap-2.5 sm:gap-3">
         <Link
           href={primaryCta.href}
-          className="inline-flex h-11 items-center gap-2 rounded-full bg-gradient-to-r from-primary to-tertiary px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98] xl:px-6 xl:text-[15px]"
+          className="inline-flex h-11 items-center gap-2 rounded-full bg-gradient-to-r from-primary to-tertiary px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98] sm:h-12 sm:px-6 sm:text-[15px]"
         >
           {primaryCta.text}
           <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2.25} aria-hidden />
@@ -145,7 +145,7 @@ export default function FeatureCard({
         {secondaryCta && (
           <Link
             href={secondaryCta.href}
-            className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-background/60 px-5 text-sm font-semibold text-card-foreground transition hover:bg-background/90 xl:px-6 xl:text-[15px]"
+            className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-background/60 px-5 text-sm font-semibold text-card-foreground transition hover:bg-background/90 sm:h-12 sm:px-6 sm:text-[15px]"
           >
             {secondaryCta.text}
           </Link>
@@ -293,10 +293,10 @@ export default function FeatureCard({
           </div>
 
           {/* Consistent CTA row */}
-          <div className="mt-2 flex flex-row flex-wrap items-center gap-3">
+          <div className="mt-4 flex flex-row flex-wrap items-center gap-2.5 sm:gap-3">
             <Link
               href={primaryCta.href}
-              className="inline-flex h-11 items-center gap-2 rounded-full bg-gradient-to-r from-primary to-tertiary px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98] xl:px-6 xl:text-[15px]"
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-gradient-to-r from-primary to-tertiary px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98] sm:h-12 sm:px-6 sm:text-[15px]"
             >
               {primaryCta.text}
               <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2.25} aria-hidden />
@@ -304,7 +304,7 @@ export default function FeatureCard({
             {secondaryCta && (
               <Link
                 href={secondaryCta.href}
-                className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-background/60 px-5 text-sm font-semibold text-card-foreground transition hover:bg-background/90 xl:px-6 xl:text-[15px]"
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-background/60 px-5 text-sm font-semibold text-card-foreground transition hover:bg-background/90 sm:h-12 sm:px-6 sm:text-[15px]"
               >
                 {secondaryCta.text}
               </Link>
