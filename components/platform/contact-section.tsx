@@ -4,6 +4,13 @@ import { useState } from "react"
 import { Phone, ArrowRight, CheckCircle } from "lucide-react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import {
+  SectionBadge,
+  SectionLead,
+  SectionTitle,
+  sectionHeadingSpacing,
+} from "@/components/ui/section-heading"
+import { cn } from "@/lib/utils"
 
 const serviceOptions = [
   "Cybersecurity",
@@ -14,8 +21,6 @@ const serviceOptions = [
   "Creative Services",
   "Custom Solution",
 ]
-
-const topBadges = ["Fast Response", "Free Consultation", "Clear Next Steps", "Business Focused"]
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -46,21 +51,13 @@ export function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10 sm:mb-12 md:mb-14"
+          className={cn(sectionHeadingSpacing, "text-center")}
         >
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 mb-5 sm:mb-6">
-            {topBadges.map((b) => (
-              <span key={b} className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium bg-secondary text-muted-foreground border border-border">
-                {b}
-              </span>
-            ))}
-          </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-4 sm:mb-5">
-            Get Started
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          <SectionBadge>Contact</SectionBadge>
+          <SectionTitle before="Get " highlight="Started" />
+          <SectionLead className="max-w-xl">
             Send us your details and we&apos;ll point you in the right direction.
-          </p>
+          </SectionLead>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 xl:gap-16 items-start max-w-5xl mx-auto">

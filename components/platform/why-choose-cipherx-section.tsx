@@ -3,6 +3,11 @@
 import { motion } from "framer-motion"
 import { DollarSign, Users, MessageSquare, Sliders, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import {
+  SectionBadge,
+  SectionLead,
+  SectionTitle,
+} from "@/components/ui/section-heading"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -36,8 +41,6 @@ const keyPoints = [
   },
 ]
 
-const topBadges = ["Affordable Options", "One Team", "Security First", "Local Focus"]
-
 export function WhyChooseCipherXSection() {
   return (
     <section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-card">
@@ -51,19 +54,13 @@ export function WhyChooseCipherXSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-5 sm:mb-6">
-              {topBadges.map((b) => (
-                <span key={b} className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium bg-background text-muted-foreground border border-border">
-                  {b}
-                </span>
-              ))}
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-4 sm:mb-5">
-              Why Choose CipherX
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8 sm:mb-10 max-w-lg">
+            <SectionBadge align="left" className="mb-4 sm:mb-5">
+              Why CipherX
+            </SectionBadge>
+            <SectionTitle before="Why Choose " highlight="CipherX" align="left" />
+            <SectionLead align="left" className="mt-3 mb-8 max-w-lg sm:mt-4 sm:mb-10">
               We make security, IT, and digital growth more practical for Toronto and GTA small businesses.
-            </p>
+            </SectionLead>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 href="/about"

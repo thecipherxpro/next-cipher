@@ -2,7 +2,20 @@
 
 import { motion } from "framer-motion"
 import FeatureCard, { type FeatureCardLayout } from "@/components/FeatureCard"
+import {
+  SectionBadge,
+  SectionLead,
+  SectionTitle,
+  sectionHeadingSpacing,
+} from "@/components/ui/section-heading"
 import { cn } from "@/lib/utils"
+
+/** Half-width stacked cards (sm+): one shared height so paired rows align. */
+const TOP_SERVICE_CARD_GRID_H = "sm:h-[620px]"
+/** Full-width horizontal cards (sm+): shared row + media height. */
+const WIDE_SERVICE_CARD_GRID_H = "sm:h-[400px]"
+const WIDE_SERVICE_MEDIA_H =
+  "bg-muted/20 sm:h-[400px] sm:max-h-[400px] sm:min-h-0"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -22,7 +35,7 @@ const services: Array<{
   layout: FeatureCardLayout
   /** Full-width bento row on sm+ */
   wide?: boolean
-  /** Half-cell: image left, 450px media, edge scrims (Lexend split row) */
+  /** Legacy: image-left bento row (unused in services grid; kept for FeatureCard API) */
   bentoSplit?: boolean
   heroImage?: { src: string; alt: string; priority?: boolean; width?: number; height?: number }
   contentClassName?: string
@@ -31,6 +44,8 @@ const services: Array<{
   imageShellClassName?: string
   imageMediaClassName?: string
   heroImageClassName?: string
+  badgesClassName?: string
+  ctaRowClassName?: string
 }> = [
   {
     title: "Cybersecurity",
@@ -41,11 +56,14 @@ const services: Array<{
     secondaryCTA: { text: "Get Security Consultation", href: "#consultation" },
     layout: "left-content",
     wide: true,
-    contentClassName: "sm:w-[642px] sm:max-w-[642px]",
-    innerGridClassName: "sm:h-[374px]",
-    imageFigureClassName: "bg-muted/20 sm:h-[374px] sm:max-h-[374px]",
-    imageShellClassName: "sm:max-h-[374px]",
-    imageMediaClassName: "p-2 sm:p-4",
+    contentClassName:
+      "sm:h-full sm:w-[642px] sm:max-w-[642px] sm:items-start sm:justify-center sm:px-0 sm:py-0 xl:px-0",
+    innerGridClassName: WIDE_SERVICE_CARD_GRID_H,
+    imageFigureClassName: WIDE_SERVICE_MEDIA_H,
+    imageShellClassName: "sm:max-h-[400px]",
+    imageMediaClassName:
+      "ml-[11px] flex flex-col items-end justify-center p-2 sm:p-4",
+    heroImageClassName: "mx-[-14px] my-[30px] px-[39px] py-0",
     heroImage: {
       src: "/services-cybersecurity.png",
       alt: "Cybersecurity illustration with shield, lock, and digital protection visuals",
@@ -60,22 +78,30 @@ const services: Array<{
     badges: ["24/7 IT Support", "Network Setup", "Software Install", "Malware Help"],
     primaryCTA: { text: "Explore Managed IT", href: "/managed-it-support" },
     secondaryCTA: { text: "Get IT Support Quote", href: "#consultation" },
-    layout: "left-content",
-    bentoSplit: true,
+    layout: "top-content",
+    innerGridClassName: TOP_SERVICE_CARD_GRID_H,
     heroImage: {
-      src: "https://lexend-nuxt.vercel.app/_nuxt/home-11-feature-02.jcxu1PaP.png",
-      alt: "",
+      src: "/Tech-support.png",
+      alt: "Managed IT and technical support illustration",
+      width: 933,
+      height: 884,
     },
   },
   {
     title: "Website Services",
     description:
       "Launch a modern website with strong structure, bookings, payments, and local visibility.",
-    badges: ["Small Business Websites", "SEO Setup", "Payment Setup", "Booking Setup"],
+    badges: ["Business Websites", "SEO Setup", "Payment Setup", "Booking Setup"],
     primaryCTA: { text: "Explore Website Services", href: "/website-development" },
     secondaryCTA: { text: "Start My Website", href: "#consultation" },
-    layout: "left-content",
-    bentoSplit: true,
+    layout: "top-content",
+    innerGridClassName: TOP_SERVICE_CARD_GRID_H,
+    heroImage: {
+      src: "/Website-services.png",
+      alt: "Website services illustration with design, hosting, and online presence visuals",
+      width: 933,
+      height: 884,
+    },
   },
   {
     title: "App Development",
@@ -85,6 +111,16 @@ const services: Array<{
     secondaryCTA: { text: "Discuss My App Idea", href: "#consultation" },
     layout: "left-content",
     wide: true,
+    innerGridClassName: WIDE_SERVICE_CARD_GRID_H,
+    contentClassName: "sm:h-full sm:items-start sm:justify-center sm:py-0",
+    imageFigureClassName: WIDE_SERVICE_MEDIA_H,
+    imageShellClassName: "sm:max-h-[400px]",
+    heroImage: {
+      src: "/App.png",
+      alt: "App development illustration with mobile and web app visuals",
+      width: 415,
+      height: 393,
+    },
   },
   {
     title: "AI Solutions",
@@ -92,8 +128,8 @@ const services: Array<{
     badges: ["AI Assistants", "Automation", "Estimate Tools", "Data Analysis"],
     primaryCTA: { text: "Explore AI Solutions", href: "/ai-solutions" },
     secondaryCTA: { text: "Ask About AI", href: "#consultation" },
-    layout: "left-content",
-    bentoSplit: true,
+    layout: "top-content",
+    innerGridClassName: TOP_SERVICE_CARD_GRID_H,
   },
   {
     title: "Creative Services",
@@ -102,49 +138,42 @@ const services: Array<{
     badges: ["Graphic Design", "Business Cards", "Photography", "Videography"],
     primaryCTA: { text: "Explore Creative Services", href: "/graphic-design" },
     secondaryCTA: { text: "Request Creative Quote", href: "#consultation" },
-    layout: "left-content",
-    bentoSplit: true,
+    layout: "top-content",
+    innerGridClassName: TOP_SERVICE_CARD_GRID_H,
+    heroImage: {
+      src: "/Creative%20service.png",
+      alt: "Creative services illustration with design and branding visuals",
+      width: 415,
+      height: 393,
+    },
   },
 ]
 
-const topBadges = ["Dedicated Service Pages", "Clear Packages", "Custom Options", "SMB Focused"]
-
 export function ServicesSection() {
   return (
-    <section id="services" className="py-16 sm:py-20 md:py-24 lg:py-32 bg-card">
+    <section
+      id="services"
+      className="bg-[rgba(245,243,239,0.5)] py-16 sm:py-20 md:py-24 lg:py-32"
+    >
       <div className="w-full container-full-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-10 text-center sm:mb-12 md:mb-14 lg:mb-16"
+          className={cn(sectionHeadingSpacing, "text-center")}
         >
-          <div className="mb-5 flex flex-wrap justify-center gap-2 sm:mb-6 sm:gap-2.5">
-            {topBadges.map((b) => (
-              <span
-                key={b}
-                className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground sm:px-4 sm:py-1.5 sm:text-sm"
-              >
-                {b}
-              </span>
-            ))}
-          </div>
-          <h2 className="mb-4 text-2xl font-bold leading-[1.1] tracking-tight text-foreground sm:mb-5 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-            Our Services
-          </h2>
-          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg">
+          <SectionBadge>Our services</SectionBadge>
+          <SectionTitle before="Our " highlight="Services" />
+          <SectionLead>
             Choose a service to view full details, package options, and consultation info.
-          </p>
+          </SectionLead>
         </motion.div>
 
         {/*
-          Bento (sm+): | full (wide) |
-                      | half | half |
-                      | full (wide) |
-                      | half | half |
+          sm+: full-width rows use horizontal layout (text | media). Half-width cards use stacked layout (media on top, content below).
         */}
-        <div className="grid grid-cols-1 items-start gap-0 sm:grid-cols-2">
+        <div className="grid grid-cols-1 items-stretch gap-x-[59px] gap-y-[33px] sm:grid-cols-2">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -154,7 +183,10 @@ export function ServicesSection() {
               viewport={{ once: true, margin: "-40px" }}
               custom={i}
               whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
-              className={cn("min-w-0 w-full self-start", service.wide && "sm:col-span-2")}
+              className={cn(
+                "flex min-h-0 min-w-0 w-full",
+                service.wide && "sm:col-span-2",
+              )}
             >
               <FeatureCard
                 title={service.title}
@@ -171,6 +203,9 @@ export function ServicesSection() {
                 imageShellClassName={service.imageShellClassName}
                 imageMediaClassName={service.imageMediaClassName}
                 heroImageClassName={service.heroImageClassName}
+                badgesClassName={service.badgesClassName}
+                ctaRowClassName={service.ctaRowClassName}
+                className="flex min-h-0 w-full flex-1 flex-col"
               />
             </motion.div>
           ))}

@@ -3,6 +3,8 @@
 import { Check } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { SectionHeader, sectionHeadingSpacing } from "@/components/ui/section-heading"
+import { cn } from "@/lib/utils"
 
 const plans = [
   {
@@ -60,14 +62,15 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10 sm:mb-12"
+          className={cn(sectionHeadingSpacing, "text-center")}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-semibold mb-3.5 text-foreground tracking-[-0.025em]">
-            Flexible pricing
-          </h2>
-          <p className="text-[15px] text-muted-foreground max-w-md mx-auto leading-relaxed">
-            Simple, transparent pricing with no hidden fees.
-          </p>
+          <SectionHeader
+            badge="Pricing plans"
+            titleAs="h1"
+            titleBefore="Transparent Pricing,"
+            titleHighlight="No Surprises"
+            description="Clear and competitive pricing with no hidden fees. Choose the plan that fits your needs."
+          />
         </motion.div>
 
         {/* Pricing grid */}

@@ -34,6 +34,10 @@ export interface FeatureCardProps {
   imageMediaClassName?: string
   /** Extra classes on the default `next/image` hero (e.g. `object-contain`). */
   heroImageClassName?: string
+  /** Merged onto the badges `<ul>` when `badges` is set. */
+  badgesClassName?: string
+  /** Merged onto the primary/secondary CTA row. */
+  ctaRowClassName?: string
   /**
    * Bento half-cell: image left / content right, fixed image height (sm+), Lexend edge scrims.
    * Matches `feature-item` row with image-first order and bottom/top gradient on media.
@@ -58,8 +62,11 @@ export default function FeatureCard({
   imageShellClassName,
   imageMediaClassName,
   heroImageClassName,
+  badgesClassName,
+  ctaRowClassName,
   bentoSplit = false,
 }: FeatureCardProps) {
+  const isTopContent = layout === "top-content"
   const isImageLeft = layout === "right-content" || bentoSplit
 
   const resolvedHero = heroImage ?? {
@@ -103,9 +110,10 @@ export default function FeatureCard({
   const contentCol = (
     <div
       className={cn(
-        "min-h-0",
-        isImageLeft ? "sm:order-2" : "sm:order-1",
-        bentoSplit ? "order-1 sm:order-2" : "order-1",
+        "relative z-[3] min-h-0",
+        isTopContent
+          ? "order-2"
+          : cn(isImageLeft ? "sm:order-2" : "sm:order-1", bentoSplit ? "order-1 sm:order-2" : "order-1"),
       )}
     >
       <div
@@ -122,11 +130,17 @@ export default function FeatureCard({
             {description}
           </p>
           {badges && badges.length > 0 && (
-            <ul className="flex flex-wrap gap-2 pt-2">
+            <ul
+              role="list"
+              className={cn(
+                "m-0 flex min-w-0 list-none flex-row flex-wrap items-start gap-2 p-0 pt-2",
+                badgesClassName,
+              )}
+            >
               {badges.map((b) => (
                 <li
                   key={b}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 text-xs font-medium text-muted-foreground"
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 text-xs font-medium text-muted-foreground"
                 >
                   <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
                   {b}
@@ -136,10 +150,15 @@ export default function FeatureCard({
           )}
         </div>
 
-        <div className="flex flex-row flex-wrap items-center gap-3 pt-3 sm:pt-2.5">
+        <div
+          className={cn(
+            "flex flex-row flex-wrap items-center gap-3 pt-3 sm:pt-2.5",
+            ctaRowClassName,
+          )}
+        >
           <Link
             href={primaryCta.href}
-            className="inline-flex w-fit items-center gap-2 rounded-full border-0 bg-gradient-to-r from-primary to-tertiary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98] dark:hover:opacity-80 xl:px-6 xl:py-3 xl:text-[15px]"
+            className="inline-flex w-fit min-w-[264px] items-center justify-center gap-2 rounded-full border-0 bg-gradient-to-r from-primary to-tertiary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98] dark:hover:opacity-80 xl:px-6 xl:py-3 xl:text-[15px]"
           >
             {primaryCta.text}
             <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2.25} aria-hidden />
@@ -147,7 +166,7 @@ export default function FeatureCard({
           {secondaryCta && (
             <Link
               href={secondaryCta.href}
-              className="inline-flex h-[46px] w-fit items-center gap-2 rounded-xl border border-border bg-background/60 px-4 text-sm font-semibold text-card-foreground transition hover:bg-background/90"
+              className="inline-flex h-[46px] w-[264px] shrink-0 items-center justify-center gap-2 rounded-xl border border-border bg-background/60 px-4 text-center text-sm font-semibold leading-snug text-card-foreground transition hover:bg-background/90"
             >
               {secondaryCta.text}
             </Link>
@@ -160,9 +179,10 @@ export default function FeatureCard({
   const imageCol = (
     <div
       className={cn(
-        "min-h-0",
-        isImageLeft ? "sm:order-1" : "sm:order-2",
-        bentoSplit ? "order-2 sm:order-1" : "order-2",
+        "relative z-[2] min-h-0",
+        isTopContent
+          ? "order-1 w-full"
+          : cn(isImageLeft ? "sm:order-1" : "sm:order-2", bentoSplit ? "order-2 sm:order-1" : "order-2"),
         imageClassName,
       )}
     >
@@ -170,49 +190,66 @@ export default function FeatureCard({
         className={cn(
           "feature-item-image panel relative w-full",
           bentoSplit && "sm:h-[450px]",
-          !bentoSplit && "sm:max-h-[391px] sm:self-start",
+          isTopContent && "w-full",
+          !bentoSplit && !isTopContent && "sm:max-h-[391px] sm:self-start",
           imageShellClassName,
         )}
       >
         <figure
           className={cn(
             "relative m-0 w-full overflow-hidden",
-            bentoSplit
-              ? "aspect-[4/3] max-h-[min(100vw,320px)] sm:aspect-auto sm:h-full sm:max-h-none"
-              : "aspect-[4/3] max-h-[min(92vw,320px)] sm:aspect-auto sm:h-[391px] sm:max-h-[391px] sm:min-h-0",
+            isTopContent
+              ? "aspect-[16/9] max-h-[min(52vw,260px)] sm:aspect-auto sm:h-[300px] sm:max-h-[300px] sm:min-h-0"
+              : bentoSplit
+                ? "aspect-[4/3] max-h-[min(100vw,320px)] sm:aspect-auto sm:h-full sm:max-h-none"
+                : "aspect-[4/3] max-h-[min(92vw,320px)] sm:aspect-auto sm:h-[391px] sm:max-h-[391px] sm:min-h-0",
             imageFigureClassName,
           )}
         >
-          <div className={cn("absolute inset-0", imageMediaClassName)}>{visual}</div>
+          <div className={cn("absolute inset-0 z-[2]", imageMediaClassName)}>{visual}</div>
         </figure>
+        {isTopContent && (
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-16 bg-gradient-to-t from-card via-card/70 to-transparent sm:h-24"
+            aria-hidden
+          />
+        )}
       </div>
     </div>
   )
 
-  const defaultScrims = !bentoSplit && (
+  const defaultScrims = !bentoSplit && !isTopContent && (
     <>
       <div
-        className="pointer-events-none absolute left-0 top-0 z-[1] hidden h-full w-1/2 bg-gradient-to-r from-secondary via-card/90 to-transparent sm:block"
+        className="pointer-events-none absolute left-0 top-0 z-0 hidden h-full w-1/2 bg-gradient-to-r from-secondary via-card/90 to-transparent sm:block"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute left-0 top-0 z-[1] block h-1/2 w-full bg-gradient-to-b from-secondary via-card/90 to-transparent sm:hidden"
+        className="pointer-events-none absolute left-0 top-0 z-0 block h-1/2 w-full bg-gradient-to-b from-secondary via-card/90 to-transparent sm:hidden"
         aria-hidden
       />
     </>
   )
 
-  const splitScrims = bentoSplit && (
+  const splitScrims = bentoSplit && !isTopContent && (
     <>
       <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] hidden h-1/2 bg-gradient-to-t from-secondary to-transparent dark:from-muted dark:to-transparent sm:block"
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-0 hidden h-1/2 bg-gradient-to-t from-secondary to-transparent dark:from-muted dark:to-transparent sm:block"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute left-0 right-0 top-0 z-[1] block h-1/2 bg-gradient-to-b from-secondary to-transparent dark:from-muted dark:to-transparent sm:hidden"
+        className="pointer-events-none absolute left-0 right-0 top-0 z-0 block h-1/2 bg-gradient-to-b from-secondary to-transparent dark:from-muted dark:to-transparent sm:hidden"
         aria-hidden
       />
     </>
+  )
+
+  /** Vertical stack (image top, content bottom): same secondary → card blend as horizontal cards, but top-to-bottom. */
+  const topContentScrims = isTopContent && (
+    <div
+      className="pointer-events-none absolute left-0 top-0 z-0 h-1/2 w-full bg-gradient-to-b from-secondary via-card/90 to-transparent"
+      aria-hidden
+    />
   )
 
   return (
@@ -225,13 +262,19 @@ export default function FeatureCard({
     >
       <div
         className={cn(
-          "relative grid min-h-0 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 sm:px-[23px] sm:py-0",
-          bentoSplit ? "items-stretch gap-2" : "items-start gap-0",
+          "relative grid min-h-0 w-full grid-cols-1 sm:px-[23px] sm:py-0",
+          isTopContent
+            ? "items-stretch gap-0"
+            : cn(
+                "sm:grid-cols-2 sm:grid-rows-1 items-stretch gap-0",
+                bentoSplit && "gap-2",
+              ),
           innerGridClassName,
         )}
       >
         {defaultScrims}
         {splitScrims}
+        {topContentScrims}
         {contentCol}
         {imageCol}
       </div>

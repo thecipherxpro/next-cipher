@@ -59,6 +59,10 @@
   --color-tertiary: #78c142;
   --color-tertiary-foreground: #ffffff;
 
+  /* Section headers — coral kicker + parallelogram highlight (marketing sections) */
+  --color-section-coral: #ff4d33;
+  --color-section-coral-foreground: #ffffff;
+
   /* Neutral — warm gray (paper family) */
   --color-neutral-50: oklch(0.99 0.003 88);
   --color-neutral-100: oklch(0.97 0.005 88);
@@ -160,6 +164,8 @@
   --color-accent-foreground: oklch(1 0 0);
   --color-tertiary: #85cd4e;
   --color-tertiary-foreground: #ffffff;
+  --color-section-coral: #ff6b52;
+  --color-section-coral-foreground: #ffffff;
   --color-sidebar: oklch(0.16 0.012 265);
   --color-sidebar-foreground: oklch(0.92 0.006 265);
   --color-sidebar-accent: oklch(0.22 0.014 265);

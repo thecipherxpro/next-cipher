@@ -1,6 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
+import {
+  SectionBadge,
+  SectionLead,
+  SectionTitle,
+  sectionHeadingSpacing,
+} from "@/components/ui/section-heading"
+import { cn } from "@/lib/utils"
 import { Lock, Wrench, Globe, Smartphone, Code2, Palette, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 
@@ -151,17 +158,14 @@ export function ServiceCardsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
+          className={cn(sectionHeadingSpacing, "text-center")}
         >
-          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-accent mb-3 sm:mb-4">
-            Our Services
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-[1.15] sm:leading-[1.1] tracking-tight mb-3 sm:mb-4">
-            What We Offer
-          </h2>
-          <p className="text-sm sm:text-base text-foreground/60 max-w-2xl mx-auto">
-            From cybersecurity and IT support to websites, apps, and AI — everything your business needs to stay protected, connected, and growing.
-          </p>
+          <SectionBadge>Our services</SectionBadge>
+          <SectionTitle before="What We " highlight="Offer" />
+          <SectionLead>
+            From cybersecurity and IT support to websites, apps, and AI — everything your business needs to stay
+            protected, connected, and growing.
+          </SectionLead>
         </motion.div>
 
         <div className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 lg:gap-8">

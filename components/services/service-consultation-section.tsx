@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, Send, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
+import { SectionBadge, SectionTitle } from "@/components/ui/section-heading"
 
 const serviceOptions = [
   "Cybersecurity",
@@ -83,12 +84,12 @@ export function ServiceConsultationSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-accent mb-3 sm:mb-4">
-              Get Started
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-[1.15] sm:leading-[1.1] tracking-tight mb-4 sm:mb-6">
+            <SectionBadge align="left" className="mb-3 sm:mb-4">
+              Get started
+            </SectionBadge>
+            <SectionTitle align="left" className="mb-4 xl:text-5xl sm:mb-6">
               Not Sure Which Service You Need?
-            </h2>
+            </SectionTitle>
             <p className="text-sm sm:text-base lg:text-lg text-foreground/70 leading-relaxed mb-5 sm:mb-8">
               Tell us about your business and we&apos;ll recommend the right next step. No pressure, no obligation — just helpful guidance.
             </p>

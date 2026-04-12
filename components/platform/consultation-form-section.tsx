@@ -3,6 +3,11 @@
 import { motion } from "framer-motion"
 import { CheckCircle2, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import {
+  SectionBadge,
+  SectionLead,
+  SectionTitle,
+} from "@/components/ui/section-heading"
 
 const included = [
   "Business needs review",
@@ -11,8 +16,6 @@ const included = [
   "Service recommendation",
   "Package or custom solution guidance",
 ]
-
-const topBadges = ["No Pressure", "Free Review", "Clear Recommendations", "Toronto & GTA Focused"]
 
 export function ConsultationFormSection() {
   return (
@@ -27,19 +30,13 @@ export function ConsultationFormSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-5 sm:mb-6">
-              {topBadges.map((b) => (
-                <span key={b} className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium bg-background text-muted-foreground border border-border">
-                  {b}
-                </span>
-              ))}
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-4 sm:mb-5">
-              Free Consultation
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8 sm:mb-10 max-w-lg">
+            <SectionBadge align="left" className="mb-4 sm:mb-5">
+              Free consultation
+            </SectionBadge>
+            <SectionTitle before="Free " highlight="Consultation" align="left" />
+            <SectionLead align="left" className="mb-8 mt-4 max-w-lg sm:mb-10 sm:mt-5">
               Tell us what your business needs and we&apos;ll recommend the right next step.
-            </p>
+            </SectionLead>
             <div className="flex flex-col gap-3 sm:gap-4 p-5 sm:p-6 md:p-7 rounded-xl sm:rounded-2xl border border-border bg-background">
               <p className="text-sm sm:text-base font-semibold text-foreground mb-1 sm:mb-2">What&apos;s included:</p>
               {included.map((item) => (

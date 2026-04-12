@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { SectionBadge, SectionTitle } from "@/components/ui/section-heading"
 
 export function HowWeHelpSection() {
   return (
@@ -16,12 +17,12 @@ export function HowWeHelpSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-accent mb-3 sm:mb-4">
-              How We Help
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-[1.15] sm:leading-[1.1] tracking-tight">
+            <SectionBadge align="left" className="mb-3 sm:mb-4">
+              How we help
+            </SectionBadge>
+            <SectionTitle align="left" className="xl:text-5xl">
               Choose the Service That Fits Your Business
-            </h2>
+            </SectionTitle>
           </motion.div>
 
           {/* Right: Description + CTAs */}

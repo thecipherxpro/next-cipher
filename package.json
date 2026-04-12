@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "git:sync": "node .cursor/hooks/ai-git-sync.cjs --manual"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

@@ -3,6 +3,11 @@
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import {
+  SectionBadge,
+  SectionLead,
+  SectionTitle,
+} from "@/components/ui/section-heading"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -60,33 +65,25 @@ export function WhyBusinessesNeedSection() {
             className="flex flex-col"
           >
             {/* Badge */}
-            <motion.div
-              variants={fadeUp}
-              custom={0}
-              className="inline-flex items-center gap-2 mb-5 sm:mb-6 w-fit"
-            >
-              <span className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold text-accent bg-accent/10 border border-accent/20">
-                Problem / Value
-              </span>
+            <motion.div variants={fadeUp} custom={0}>
+              <SectionBadge align="left" className="mb-4 sm:mb-5">
+                Problem / value
+              </SectionBadge>
             </motion.div>
 
-            {/* Main heading */}
-            <motion.h2
-              variants={fadeUp}
-              custom={1}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-5 sm:mb-6 leading-[1.1] max-w-lg"
-            >
-              Too Many Businesses Are Still Left Vulnerable
-            </motion.h2>
+            <motion.div variants={fadeUp} custom={1}>
+              <SectionTitle align="left" className="mb-5 max-w-lg sm:mb-6">
+                Too Many Businesses Are Still Left Vulnerable
+              </SectionTitle>
+            </motion.div>
 
-            {/* Description */}
-            <motion.p
-              variants={fadeUp}
-              custom={2}
-              className="text-sm sm:text-base md:text-lg text-muted-foreground mb-5 sm:mb-6 leading-relaxed max-w-lg"
-            >
-              Many small businesses delay proper security, IT support, websites, and digital systems because providers are too costly, too limited, or too fragmented. That leads to downtime, weak protection, outdated systems, and missed growth.
-            </motion.p>
+            <motion.div variants={fadeUp} custom={2}>
+              <SectionLead align="left" className="mt-3 max-w-lg mb-5 sm:mt-4 sm:mb-6">
+                Many small businesses delay proper security, IT support, websites, and digital systems because
+                providers are too costly, too limited, or too fragmented. That leads to downtime, weak protection,
+                outdated systems, and missed growth.
+              </SectionLead>
+            </motion.div>
 
             {/* Value prop */}
             <motion.p
