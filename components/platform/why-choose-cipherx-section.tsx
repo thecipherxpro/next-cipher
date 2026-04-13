@@ -64,7 +64,7 @@ export function WhyChooseCipherXSection() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 href="/about"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-accent text-accent-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-md"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-section-coral text-white rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold hover:opacity-90 active:scale-[0.98] transition-all shadow-md"
               >
                 Why Businesses Choose Us
               </Link>
