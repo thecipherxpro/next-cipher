@@ -13,7 +13,6 @@ import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
 import {
   SectionBadge,
-  SectionTitle,
 } from "@/components/ui/section-heading"
 
 const problems: { number: string; icon: LucideIcon; title: string; description: string }[] = [
@@ -72,9 +71,15 @@ export function WhyBusinessesNeedSection() {
           <div className="flex flex-col">
             <SectionBadge align="left">Problem / Value</SectionBadge>
 
-            <SectionTitle align="left" className="mt-2 max-w-[500px] text-balance">
-              Too Many Businesses Are Left Vulnerable
-            </SectionTitle>
+            <div className="mt-2 max-w-[500px] text-balance">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
+                Too Many Businesses Are Still Left{" "}
+                <span className="relative inline-block">
+                  <span className="absolute inset-0 -z-10 rounded-lg bg-primary px-3 py-1 sm:px-4 sm:py-2" aria-hidden />
+                  <span className="relative text-white">Vulnerable</span>
+                </span>
+              </h2>
+            </div>
 
             <p className="mt-4 max-w-[460px] text-sm sm:text-[0.9375rem] leading-relaxed text-muted-foreground">
               Most small businesses delay proper security, IT support, and digital systems because providers are
