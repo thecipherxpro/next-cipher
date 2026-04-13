@@ -25,7 +25,7 @@ const packageGroups = [
     packages: ["Startup IT", "Business IT", "Managed IT Complete"],
     cta: "See IT Packages",
     href: "/managed-it-support",
-    accent: "bg-primary/10 text-primary",
+    accent: "bg-section-coral/10 text-section-coral",
   },
   {
     icon: Globe,
@@ -41,7 +41,7 @@ const packageGroups = [
     packages: ["MVP Starter", "Startup App Build", "Custom AI Build"],
     cta: "See App & AI Packages",
     href: "/ai-solutions",
-    accent: "bg-primary/10 text-primary",
+    accent: "bg-section-coral/10 text-section-coral",
   },
 ]
 
