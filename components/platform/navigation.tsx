@@ -97,7 +97,7 @@ export function Navigation() {
               <img
                 src="/cipherx-logo.png"
                 alt="CipherX"
-                className="h-7 sm:h-8 md:h-9 w-auto"
+                className="h-12 sm:h-14 md:h-16 w-auto"
               />
             </Link>
 
@@ -168,9 +168,11 @@ export function Navigation() {
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-5 sm:px-6 pt-5 sm:pt-6 pb-4 sm:pb-5 border-b border-border">
+              <div className="flex items-center shrink-0">
                 <Link href="/" onClick={() => setIsOpen(false)}>
-                  <img src="/cipherx-logo.png" alt="CipherX" className="h-7 sm:h-9 w-auto" />
+                  <img src="/cipherx-logo.png" alt="CipherX" className="h-12 sm:h-14 w-auto" />
                 </Link>
+              </div>
                 <div className="flex items-center gap-2 sm:gap-3">
                   <ThemeToggle />
                   <button
