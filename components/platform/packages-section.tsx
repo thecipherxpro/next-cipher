@@ -18,7 +18,7 @@ const packageGroups = [
     cta: "See Security Packages",
     href: "/cybersecurity",
     accent: "bg-accent/10 text-accent",
-    badgeStyle: "bg-primary/15 text-primary",
+    badgeStyle: "bg-section-coral text-white",
   },
   {
     icon: Wrench,
@@ -36,7 +36,7 @@ const packageGroups = [
     cta: "See Website Packages",
     href: "/website-development",
     accent: "bg-accent/10 text-accent",
-    badgeStyle: "bg-primary/15 text-primary",
+    badgeStyle: "bg-section-coral text-white",
   },
   {
     icon: Smartphone,
@@ -45,7 +45,7 @@ const packageGroups = [
     cta: "See App & AI Packages",
     href: "/ai-solutions",
     accent: "bg-section-coral/10 text-section-coral",
-    badgeStyle: "bg-primary/15 text-primary",
+    badgeStyle: "bg-section-coral text-white",
   },
 ]
 
