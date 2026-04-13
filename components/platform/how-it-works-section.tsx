@@ -1,21 +1,9 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { ClipboardCheck, MessageSquare, Lightbulb, Rocket } from "lucide-react"
 import {
   SectionBadge,
   SectionTitle,
   SectionLead,
 } from "@/components/ui/section-heading"
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-}
 
 const steps = [
   {
@@ -50,13 +38,7 @@ export function HowItWorksSection() {
       <div className="container-wide">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-12 sm:mb-16 max-w-2xl"
-        >
+        <div className="mb-12 sm:mb-16 max-w-2xl">
           <SectionBadge align="left">How it works</SectionBadge>
           <SectionTitle align="left" className="mt-1">
             Simple Steps to Get Started
@@ -64,7 +46,7 @@ export function HowItWorksSection() {
           <SectionLead align="left" className="mt-4 max-w-xl">
             Getting started with CipherX is simple. We begin by understanding your business, your risks, your goals, and the service you need most.
           </SectionLead>
-        </motion.div>
+        </div>
 
         {/* Steps grid */}
         <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
@@ -75,17 +57,12 @@ export function HowItWorksSection() {
             aria-hidden
           />
 
-          {steps.map((step, i) => {
+          {steps.map((step) => {
             const Icon = step.icon
             return (
-              <motion.div
+              <div
                 key={step.number}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-40px" }}
-                custom={i}
-                className="relative flex flex-col rounded-2xl border border-border bg-card p-6 sm:p-7 gap-5 hover:border-primary/30 hover:shadow-soft transition-all"
+                className="relative flex flex-col rounded-2xl border border-border bg-card p-6 sm:p-7 gap-5 transition-colors hover:border-primary/30"
               >
                 {/* Icon + step number row */}
                 <div className="flex items-center justify-between">
@@ -108,21 +85,15 @@ export function HowItWorksSection() {
                     {step.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
         </div>
 
         {/* Footer note */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-10 text-sm text-muted-foreground leading-relaxed border-t border-border pt-8 max-w-2xl"
-        >
+        <p className="mt-10 text-sm text-muted-foreground leading-relaxed border-t border-border pt-8 max-w-2xl">
           Whether you need a quick fix, full business setup, or long-term support — CipherX can guide the process from start to finish.
-        </motion.p>
+        </p>
       </div>
     </section>
   )

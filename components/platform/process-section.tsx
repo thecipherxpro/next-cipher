@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { MessageSquare, ScanSearch, ClipboardList, Wrench, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import {
@@ -44,13 +41,7 @@ export function ProcessSection() {
       <div className="w-full container-full-wide">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className={cn(sectionHeadingSpacing, "text-center")}
-        >
+        <div className={cn(sectionHeadingSpacing, "text-center")}>
           <SectionBadge>Our process</SectionBadge>
           <SectionTitle before="How It " highlight="Works" />
           <SectionLead className="mb-7 max-w-xl sm:mb-9">
@@ -63,7 +54,7 @@ export function ProcessSection() {
             Start the Process
             <ArrowRight className="h-4 w-4" />
           </Link>
-        </motion.div>
+        </div>
 
         {/* Steps */}
         <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
@@ -74,16 +65,12 @@ export function ProcessSection() {
             aria-hidden
           />
 
-          {steps.map((step, i) => {
+          {steps.map((step) => {
             const Icon = step.icon
             return (
-              <motion.div
+              <div
                 key={step.number}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex flex-col gap-5 rounded-2xl border border-border bg-card p-6 sm:p-7 hover:border-primary/30 hover:shadow-soft transition-all"
+                className="relative flex flex-col gap-5 rounded-2xl border border-border bg-card p-6 sm:p-7 transition-colors hover:border-primary/30"
               >
                 {/* Icon + step number row */}
                 <div className="flex items-center justify-between">
@@ -104,7 +91,7 @@ export function ProcessSection() {
                     {step.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
         </div>
