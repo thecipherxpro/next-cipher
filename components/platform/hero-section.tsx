@@ -83,7 +83,7 @@ export function HeroSection() {
               >
                 <h1 className="font-sans tracking-tight leading-[1.1]">
                   <span className="block font-normal text-foreground/70 text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-1 sm:mb-2">{slide.eyebrow}</span>
-                  <span className="block font-extrabold text-accent text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-1 sm:mb-2">{slide.titleAccent}</span>
+                  <span className="block font-extrabold text-[#0f9a9c] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-1 sm:mb-2">{slide.titleAccent}</span>
                   <span className="block font-normal text-foreground/60 text-lg sm:text-xl md:text-2xl lg:text-3xl">{slide.titleEnd}</span>
                 </h1>
               </div>
@@ -103,14 +103,14 @@ export function HeroSection() {
               >
                 <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 bg-accent text-accent-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-md"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 bg-[#0f9a9c] text-white rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold hover:opacity-90 active:scale-[0.98] transition-all shadow-lg"
                 >
                   {slide.primaryCTA}
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                 </Link>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 bg-white text-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold hover:bg-secondary active:scale-[0.98] transition-all border border-border"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 bg-white text-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold hover:bg-secondary active:scale-[0.98] transition-all border border-[#0f9a9c] shadow-2xl"
                 >
                   {slide.secondaryCTA}
                 </Link>
