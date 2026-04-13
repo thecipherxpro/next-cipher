@@ -17,7 +17,7 @@ const packageGroups = [
     packages: ["Starter Security", "Growth Security", "Business Security+"],
     cta: "See Security Packages",
     href: "/cybersecurity",
-    accent: "bg-accent/10 text-accent",
+    accent: "bg-section-coral text-white",
     badgeStyle: "bg-section-coral text-white",
   },
   {
@@ -26,7 +26,7 @@ const packageGroups = [
     packages: ["Startup IT", "Business IT", "Managed IT Complete"],
     cta: "See IT Packages",
     href: "/managed-it-support",
-    accent: "bg-section-coral/10 text-section-coral",
+    accent: "bg-section-coral text-white",
     badgeStyle: "bg-section-coral text-white",
   },
   {
@@ -35,7 +35,7 @@ const packageGroups = [
     packages: ["Launch Website", "Growth Website", "Business Presence Complete"],
     cta: "See Website Packages",
     href: "/website-development",
-    accent: "bg-accent/10 text-accent",
+    accent: "bg-section-coral text-white",
     badgeStyle: "bg-section-coral text-white",
   },
   {
@@ -44,7 +44,7 @@ const packageGroups = [
     packages: ["MVP Starter", "Startup App Build", "Custom AI Build"],
     cta: "See App & AI Packages",
     href: "/ai-solutions",
-    accent: "bg-section-coral/10 text-section-coral",
+    accent: "bg-section-coral text-white",
     badgeStyle: "bg-section-coral text-white",
   },
 ]
