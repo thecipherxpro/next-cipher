@@ -18,6 +18,7 @@ const packageGroups = [
     cta: "See Security Packages",
     href: "/cybersecurity",
     accent: "bg-accent/10 text-accent",
+    badgeStyle: "bg-primary/15 text-primary",
   },
   {
     icon: Wrench,
@@ -26,6 +27,7 @@ const packageGroups = [
     cta: "See IT Packages",
     href: "/managed-it-support",
     accent: "bg-section-coral/10 text-section-coral",
+    badgeStyle: "bg-section-coral text-white",
   },
   {
     icon: Globe,
@@ -34,6 +36,7 @@ const packageGroups = [
     cta: "See Website Packages",
     href: "/website-development",
     accent: "bg-accent/10 text-accent",
+    badgeStyle: "bg-primary/15 text-primary",
   },
   {
     icon: Smartphone,
@@ -42,6 +45,7 @@ const packageGroups = [
     cta: "See App & AI Packages",
     href: "/ai-solutions",
     accent: "bg-section-coral/10 text-section-coral",
+    badgeStyle: "bg-primary/15 text-primary",
   },
 ]
 
@@ -92,7 +96,7 @@ export function PackagesSection() {
                 <div className="mb-6 flex flex-1 flex-col gap-2">
                   {group.packages.map((pkg, j) => (
                     <div key={pkg} className="flex items-start gap-3 rounded-lg bg-background/60 px-4 py-3">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-primary">
+                      <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold ${group.badgeStyle}`}>
                         {j + 1}
                       </span>
                       <span className="text-sm text-foreground">{pkg}</span>
