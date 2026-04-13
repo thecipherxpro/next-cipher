@@ -5,6 +5,7 @@ import { WhyBusinessesNeedSection } from "@/components/platform/why-cipherx-sect
 import { ServicesSection } from "@/components/platform/services-section"
 import { PackagesSection } from "@/components/platform/packages-section"
 import { WhyChooseCipherXSection } from "@/components/platform/why-choose-cipherx-section"
+import { ShowcaseSection } from "@/components/platform/showcase-section"
 import { UseCaseSection } from "@/components/platform/use-case-section"
 import { ConsultationFormSection } from "@/components/platform/consultation-form-section"
 import { ProcessSection } from "@/components/platform/process-section"
@@ -23,6 +24,7 @@ export default function Home() {
       <ServicesSection />
       <PackagesSection />
       <WhyChooseCipherXSection />
+      <ShowcaseSection />
       <UseCaseSection />
       <ConsultationFormSection />
       <ProcessSection />
