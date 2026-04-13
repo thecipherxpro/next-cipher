@@ -49,7 +49,7 @@ export function ProcessSection() {
           </SectionLead>
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-tertiary px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 active:scale-[0.98]"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-section-coral px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 active:scale-[0.98]"
           >
             Start the Process
             <ArrowRight className="h-4 w-4" />
