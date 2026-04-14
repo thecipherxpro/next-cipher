@@ -55,12 +55,11 @@
   --color-accent-800: oklch(0.38 0.07 175);
   --color-accent-900: oklch(0.30 0.05 175);
 
-  /* Tertiary — lime end of pill CTA gradient (ref #78C142) */
-  --color-tertiary: #78c142;
+  --color-tertiary: #0f9a9c;
   --color-tertiary-foreground: #ffffff;
 
-  /* Section headers — coral kicker + parallelogram highlight (marketing sections) */
-  --color-section-coral: #ff4d33;
+  /* Section headers — teal primary kicker + parallelogram highlight (marketing sections) */
+  --color-section-coral: #0f9a9c;
   --color-section-coral-foreground: #ffffff;
 
   /* Neutral — warm gray (paper family) */
@@ -162,9 +161,9 @@
   --color-secondary-foreground: oklch(0.94 0.006 265);
   --color-primary-foreground: oklch(1 0 0);
   --color-accent-foreground: oklch(1 0 0);
-  --color-tertiary: #85cd4e;
+  --color-tertiary: #0f9a9c;
   --color-tertiary-foreground: #ffffff;
-  --color-section-coral: #ff6b52;
+  --color-section-coral: #0f9a9c;
   --color-section-coral-foreground: #ffffff;
   --color-sidebar: oklch(0.16 0.012 265);
   --color-sidebar-foreground: oklch(0.92 0.006 265);
@@ -349,7 +348,7 @@
 
   /* ─────────────────────────────────────────────────────────────────────────
      BADGE & LABEL UTILITIES
-     ──��────────────────────────────────────────────────────────────────────── */
+     ──��─────────��──────────────────────────────────────────────────────────── */
   .badge-primary {
     @apply inline-block px-2.5 py-1 sm:px-3 rounded-full text-[11px] sm:text-xs font-semibold bg-primary/10 text-primary;
   }
