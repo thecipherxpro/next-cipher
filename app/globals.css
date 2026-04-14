@@ -146,30 +146,32 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    DARK MODE THEME OVERRIDES
    ═══════════════════════════════════════════════════════════════════════════ */
-@dark {
-  --color-background: oklch(0.14 0.012 265);
-  --color-foreground: oklch(0.94 0.006 265);
-  --color-card: oklch(0.18 0.014 265);
-  --color-card-foreground: oklch(0.94 0.006 265);
-  --color-popover: oklch(0.18 0.014 265);
-  --color-popover-foreground: oklch(0.94 0.006 265);
-  --color-muted: oklch(0.24 0.014 265);
-  --color-muted-foreground: oklch(0.72 0.014 265);
-  --color-border: oklch(0.30 0.014 265);
-  --color-input: oklch(0.22 0.014 265);
-  --color-secondary: oklch(0.24 0.014 265);
-  --color-secondary-foreground: oklch(0.94 0.006 265);
-  --color-primary-foreground: oklch(1 0 0);
-  --color-accent-foreground: oklch(1 0 0);
-  --color-tertiary: #0f9a9c;
-  --color-tertiary-foreground: #ffffff;
-  --color-section-coral: #0f9a9c;
-  --color-section-coral-foreground: #ffffff;
-  --color-sidebar: oklch(0.16 0.012 265);
-  --color-sidebar-foreground: oklch(0.92 0.006 265);
-  --color-sidebar-accent: oklch(0.22 0.014 265);
-  --color-sidebar-border: oklch(0.30 0.014 265);
-  --color-destructive: oklch(0.50 0.18 25);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: oklch(0.14 0.012 265);
+    --color-foreground: oklch(0.94 0.006 265);
+    --color-card: oklch(0.18 0.014 265);
+    --color-card-foreground: oklch(0.94 0.006 265);
+    --color-popover: oklch(0.18 0.014 265);
+    --color-popover-foreground: oklch(0.94 0.006 265);
+    --color-muted: oklch(0.24 0.014 265);
+    --color-muted-foreground: oklch(0.72 0.014 265);
+    --color-border: oklch(0.30 0.014 265);
+    --color-input: oklch(0.22 0.014 265);
+    --color-secondary: oklch(0.24 0.014 265);
+    --color-secondary-foreground: oklch(0.94 0.006 265);
+    --color-primary-foreground: oklch(1 0 0);
+    --color-accent-foreground: oklch(1 0 0);
+    --color-tertiary: #0f9a9c;
+    --color-tertiary-foreground: #ffffff;
+    --color-section-coral: #0f9a9c;
+    --color-section-coral-foreground: #ffffff;
+    --color-sidebar: oklch(0.16 0.012 265);
+    --color-sidebar-foreground: oklch(0.92 0.006 265);
+    --color-sidebar-accent: oklch(0.22 0.014 265);
+    --color-sidebar-border: oklch(0.30 0.014 265);
+    --color-destructive: oklch(0.50 0.18 25);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -348,7 +350,7 @@
 
   /* ─────────────────────────────────────────────────────────────────────────
      BADGE & LABEL UTILITIES
-     ──��─────────��──────────────────────────────────────────────────────────── */
+     ──��─────────��──────────────────���───────────────────────────────────────── */
   .badge-primary {
     @apply inline-block px-2.5 py-1 sm:px-3 rounded-full text-[11px] sm:text-xs font-semibold bg-primary/10 text-primary;
   }
