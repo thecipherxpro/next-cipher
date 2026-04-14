@@ -49,7 +49,7 @@ export function Footer() {
             className="col-span-2 lg:col-span-2"
           >
             <Link href="/" className="flex items-center mb-4 sm:mb-5">
-              <img src="/cipherx-logo.png" alt="CipherX Logo" className="h-12 sm:h-14 md:h-16 w-auto" />
+              <img src="/cipherx-logo.png" alt="CipherX Logo" className="h-8 sm:h-9 md:h-10 w-auto" />
             </Link>
             <p className="text-sm sm:text-base text-muted-foreground mb-5 sm:mb-6 max-w-xs leading-relaxed">
               Affordable cybersecurity, managed IT, websites, apps, and AI solutions for Toronto and GTA small businesses.

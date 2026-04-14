@@ -83,7 +83,7 @@ export function HeroSection() {
               >
                 <h1 className="font-sans tracking-tight leading-[1.1]">
                   <span className="block font-normal text-foreground/70 text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-1 sm:mb-2">{slide.eyebrow}</span>
-                  <span className="block font-extrabold text-[#0f9a9c] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-1 sm:mb-2">{slide.titleAccent}</span>
+                  <span className="block font-extrabold text-accent text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-1 sm:mb-2">{slide.titleAccent}</span>
                   <span className="block font-normal text-foreground/60 text-lg sm:text-xl md:text-2xl lg:text-3xl">{slide.titleEnd}</span>
                 </h1>
               </div>
@@ -103,14 +103,14 @@ export function HeroSection() {
               >
                 <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 bg-[#0f9a9c] text-white rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold hover:opacity-90 active:scale-[0.98] transition-all shadow-lg"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 bg-accent text-accent-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-md"
                 >
                   {slide.primaryCTA}
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                 </Link>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 bg-white text-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold hover:bg-secondary active:scale-[0.98] transition-all border border-[#0f9a9c] shadow-2xl"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 bg-white text-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold hover:bg-secondary active:scale-[0.98] transition-all border border-border"
                 >
                   {slide.secondaryCTA}
                 </Link>
@@ -125,11 +125,24 @@ export function HeroSection() {
               </p>
             </div>
 
-            {/* Logo */}
+            {/* Logo + Ribbon column */}
             <div
               ref={logoContainerRef}
-              className="relative flex items-center justify-center mt-6 lg:mt-0 flex-1 h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96"
+              className="relative flex items-center justify-center mt-6 lg:mt-0 flex-1 h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72"
             >
+              {/* Ribbon behind logo */}
+              <div className="absolute -inset-20 sm:-inset-28 md:-inset-36 lg:-inset-32 xl:-inset-40 z-10 pointer-events-none select-none">
+                <Image
+                  src="/hero-ribbon.png"
+                  alt=""
+                  fill
+                  className="object-cover object-center opacity-80"
+                  aria-hidden
+                  loading="eager"
+                  priority
+                />
+              </div>
+
               {/* Radial glow - teal */}
               <div className="absolute inset-0 z-10 rounded-full blur-3xl opacity-30 pointer-events-none glow-teal" />
 
@@ -138,9 +151,9 @@ export function HeroSection() {
                 <Image
                   src="/cipherx-logo.png"
                   alt="CipherX Security Shield"
-                  width={400}
-                  height={400}
-                  className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain drop-shadow-2xl"
+                  width={360}
+                  height={360}
+                  className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 object-contain drop-shadow-2xl"
                   priority
                 />
               </div>
