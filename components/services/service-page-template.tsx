@@ -55,11 +55,28 @@ interface ServicePageProps {
   formFields: { name: string; label: string; type: string; options?: string[]; required?: boolean }[]
   formButtonText: string
   faqs: { question: string; answer: string }[]
-  relatedServices: { title: string; href: string }[]
+  relatedServices: { title: string; href: string; benefit: string }[]
   howItWorksSteps?: { number: string; title: string; description: string }[]
   commonProblems?: string[]
   commonProblemsHeading?: string
   commonProblemsCTA?: { text: string; href: string }
+  // Right Panel Config
+  rightPanel?: {
+    consultationHeading: string
+    consultationText: string
+    consultationCTA: { text: string; href: string }
+    consultationMicrocopy: string
+    quickHelpHeading: string
+    quickHelpText: string
+    quickHelpButtons: { text: string; href: string }[]
+    packageRecommendationHeading: string
+    packageRecommendationText: string
+    packageRecommendationCTA: { text: string; href: string }
+    trustBadges: string[]
+    relatedServicesHeading?: string
+    packageBadge?: string
+    quickHelpBadge?: string
+  }
 }
 
 export function ServicePageTemplate({
@@ -86,6 +103,7 @@ export function ServicePageTemplate({
   commonProblems,
   commonProblemsHeading,
   commonProblemsCTA,
+  rightPanel,
 }: ServicePageProps) {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -562,52 +580,114 @@ export function ServicePageTemplate({
           )}
         </div>
 
-        {/* Sticky Right Panel - 1 column (Desktop only) */}
-        <motion.div
-          className="hidden lg:flex sticky top-24 col-span-1 h-fit"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: stickyVisible ? 1 : 0, x: stickyVisible ? 0 : 20 }}
-        >
-          <div className="w-full bg-card border border-foreground/[0.06] rounded-xl p-5 sm:p-6">
-            <span className="inline-block px-2.5 py-1 bg-teal-100 text-teal-700 rounded-full text-[10px] font-semibold mb-3 sm:mb-4">
-              Free Consultation
-            </span>
+        {/* Sticky Right Panel - Desktop Only */}
+        {rightPanel && (
+          <motion.div className="hidden lg:flex sticky top-24 col-span-1 h-fit flex-col gap-4">
+            {/* Card 1: Consultation CTA */}
+            <div className="bg-card border border-foreground/[0.06] rounded-xl p-5">
+              <span className="inline-block px-2.5 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-semibold mb-3">
+                Free Consultation
+              </span>
+              <h3 className="text-base font-bold text-foreground mb-2">
+                {rightPanel.consultationHeading}
+              </h3>
+              <p className="text-xs text-foreground/60 mb-4 leading-relaxed">
+                {rightPanel.consultationText}
+              </p>
+              <Link
+                href={rightPanel.consultationCTA.href}
+                className="w-full block px-4 py-2.5 bg-primary text-primary-foreground rounded-lg text-xs font-semibold hover:opacity-90 transition-all text-center"
+              >
+                {rightPanel.consultationCTA.text}
+              </Link>
+              <p className="text-[10px] text-foreground/50 text-center mt-2">
+                {rightPanel.consultationMicrocopy}
+              </p>
+            </div>
 
-            <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">
-              Need Help With This Service?
-            </h3>
+            {/* Card 2: Related Services */}
+            {relatedServices && relatedServices.length > 0 && (
+              <div className="bg-card border border-foreground/[0.06] rounded-xl p-5">
+                <h3 className="text-base font-bold text-foreground mb-3">
+                  {rightPanel.relatedServicesHeading || "Related Services"}
+                </h3>
+                <div className="space-y-2">
+                  {relatedServices.map((service) => (
+                    <Link
+                      key={service.title}
+                      href={service.href}
+                      className="block p-2.5 hover:bg-background rounded-lg transition-colors group"
+                    >
+                      <h4 className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {service.title}
+                      </h4>
+                      <p className="text-[10px] text-foreground/60 group-hover:text-foreground/70 transition-colors">
+                        {service.benefit}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
 
-            <p className="text-xs sm:text-sm text-foreground/60 mb-4 sm:mb-6 leading-relaxed">
-              Tell us what your business needs and get a practical next-step recommendation.
-            </p>
+            {/* Card 3: Quick Help */}
+            <div className="bg-card border border-foreground/[0.06] rounded-xl p-5">
+              <h3 className="text-base font-bold text-foreground mb-2">
+                {rightPanel.quickHelpHeading}
+              </h3>
+              <p className="text-xs text-foreground/60 mb-3 leading-relaxed">
+                {rightPanel.quickHelpText}
+              </p>
+              <div className="flex flex-col gap-2">
+                {rightPanel.quickHelpButtons.map((btn) => (
+                  <Link
+                    key={btn.text}
+                    href={btn.href}
+                    className="px-3 py-2 border border-foreground/20 text-foreground rounded-lg text-xs font-semibold hover:bg-background transition-colors text-center"
+                  >
+                    {btn.text}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-            <ul className="space-y-2 sm:space-y-3 mb-5 sm:mb-6">
-              {[
-                "Toronto & GTA focused",
-                "Small business friendly",
-                "Custom or package options",
-                "Clear next steps",
-                "No obligation",
-              ].map((bullet) => (
-                <li key={bullet} className="flex items-start gap-2 text-xs sm:text-sm text-foreground/70">
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 mt-0.5 text-primary" />
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Card 4: Package Recommendation */}
+            <div className="bg-card border border-foreground/[0.06] rounded-xl p-5">
+              {rightPanel.packageBadge && (
+                <span className="inline-block px-2.5 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-semibold mb-2">
+                  {rightPanel.packageBadge}
+                </span>
+              )}
+              <h3 className="text-base font-bold text-foreground mb-2">
+                {rightPanel.packageRecommendationHeading}
+              </h3>
+              <p className="text-xs text-foreground/60 mb-3 leading-relaxed">
+                {rightPanel.packageRecommendationText}
+              </p>
+              <Link
+                href={rightPanel.packageRecommendationCTA.href}
+                className="w-full block px-4 py-2.5 border border-primary/30 text-primary rounded-lg text-xs font-semibold hover:bg-primary/5 transition-all text-center"
+              >
+                {rightPanel.packageRecommendationCTA.text}
+              </Link>
+            </div>
 
-            <Link
-              href="#consultation"
-              className="w-full block px-4 py-2.5 sm:py-3 bg-primary text-primary-foreground rounded-lg text-xs sm:text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all text-center mb-2 sm:mb-3"
-            >
-              Request My Consultation
-            </Link>
-
-            <p className="text-[10px] sm:text-xs text-foreground/50 text-center">
-              No pressure. No generic sales pitch.
-            </p>
-          </div>
-        </motion.div>
+            {/* Card 5: Trust Badges */}
+            <div className="bg-card border border-foreground/[0.06] rounded-xl p-5">
+              <h3 className="text-base font-bold text-foreground mb-3">
+                Why CipherX
+              </h3>
+              <div className="space-y-2">
+                {rightPanel.trustBadges.map((badge) => (
+                  <div key={badge} className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                    <span className="text-xs text-foreground/70">{badge}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   )
