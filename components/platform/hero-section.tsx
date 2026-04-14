@@ -125,24 +125,11 @@ export function HeroSection() {
               </p>
             </div>
 
-            {/* Logo + Ribbon column */}
+            {/* Logo column */}
             <div
               ref={logoContainerRef}
-              className="relative flex items-center justify-center mt-6 lg:mt-0 flex-1 h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72"
+              className="relative flex items-center justify-center mt-6 lg:mt-0 flex-1 h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96"
             >
-              {/* Ribbon behind logo */}
-              <div className="absolute -inset-20 sm:-inset-28 md:-inset-36 lg:-inset-32 xl:-inset-40 z-10 pointer-events-none select-none">
-                <Image
-                  src="/hero-ribbon.png"
-                  alt=""
-                  fill
-                  className="object-cover object-center opacity-80"
-                  aria-hidden
-                  loading="eager"
-                  priority
-                />
-              </div>
-
               {/* Radial glow - teal */}
               <div className="absolute inset-0 z-10 rounded-full blur-3xl opacity-30 pointer-events-none glow-teal" />
 
@@ -151,9 +138,9 @@ export function HeroSection() {
                 <Image
                   src="/cipherx-logo.png"
                   alt="CipherX Security Shield"
-                  width={360}
-                  height={360}
-                  className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 object-contain drop-shadow-2xl"
+                  width={400}
+                  height={400}
+                  className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain drop-shadow-2xl"
                   priority
                 />
               </div>
