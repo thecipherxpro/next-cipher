@@ -266,7 +266,7 @@ export default function AISolutionsPage() {
 
         {/* RIGHT PANEL */}
         <aside className="hidden lg:block self-start">
-          <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto overflow-x-hidden pr-2 space-y-4">
+          <div className="sticky top-24 space-y-4">
           {/* Consultation */}
           <PanelCard
             heading="AI Consultation"
