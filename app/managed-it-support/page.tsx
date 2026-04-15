@@ -447,8 +447,8 @@ export default function ManagedITSupportPage() {
         </div>
 
         {/* RIGHT STICKY PANEL */}
-        <aside className="hidden lg:block self-start">
-          <div className="sticky top-24 space-y-4">
+        <aside className="hidden lg:block self-start pb-96">
+          <div className="sticky top-24 space-y-4 mb-18">
             <PanelCard>
               <span className="rounded-full bg-[#e9f8ed] px-3 py-1 text-xs font-bold text-[#25a244]">
                 Free Consultation

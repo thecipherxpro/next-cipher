@@ -265,8 +265,8 @@ export default function CybersecurityPage() {
         </div>
 
         {/* RIGHT PANEL */}
-        <aside className="hidden lg:block self-start">
-          <div className="sticky top-24 space-y-4">
+        <aside className="hidden lg:block self-start pb-96">
+          <div className="sticky top-24 space-y-4 mb-18">
           {/* Consultation */}
           <PanelCard
             heading="Request Free Assessment"
