@@ -148,10 +148,9 @@ export default function GraphicDesignPage() {
         </div>
       </section>
 
-      {/* BODY: 2-COL FLEX */}
-      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row lg:items-start">
-        {/* LEFT — scrollable content */}
-        <div className="min-w-0 flex-1 space-y-8 px-4 py-10 lg:px-8">
+      {/* BODY GRID */}
+      <section className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
+        <div className="space-y-8">
           {/* Why It Matters */}
           <SectionHeader title="Why Design Matters" />
           <div className="grid sm:grid-cols-2 gap-4">
@@ -265,9 +264,9 @@ export default function GraphicDesignPage() {
           </div>
         </div>
 
-        {/* RIGHT — static panel */}
-        <aside className="hidden lg:block w-[380px] shrink-0 border-l border-black/10">
-          <div className="sticky top-24 space-y-4 px-6 py-10">
+        {/* RIGHT PANEL */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-0 h-screen overflow-y-auto overflow-x-hidden pr-2 space-y-4 flex flex-col">
           {/* Consultation */}
           <PanelCard
             heading="Design Consultation"
@@ -307,9 +306,8 @@ export default function GraphicDesignPage() {
               View Details
             </Link>
           </div>
-          </div>
         </aside>
-      </div>
+      </section>
 
       {/* CONSULTATION FORM */}
       <section id="consultation" className="border-t border-black/10 bg-white">

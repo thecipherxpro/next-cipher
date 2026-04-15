@@ -149,10 +149,10 @@ export default function ManagedITSupportPage() {
         </div>
       </section>
 
-      {/* BODY: 2-COL FLEX */}
-      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row lg:items-start">
-        {/* LEFT — scrollable content */}
-        <div className="min-w-0 flex-1 space-y-8 px-4 py-10 lg:px-8">
+      {/* BODY GRID */}
+      <section className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
+        {/* LEFT CONTENT */}
+        <div className="space-y-8">
           {/* WHY IT MATTERS */}
           <SectionCard>
             <SectionHeader
@@ -446,9 +446,9 @@ export default function ManagedITSupportPage() {
           </section>
         </div>
 
-        {/* RIGHT — static panel */}
-        <aside className="hidden lg:block w-[380px] shrink-0 border-l border-black/10">
-          <div className="sticky top-24 space-y-4 px-6 py-10">
+        {/* RIGHT STICKY PANEL */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-0 h-screen overflow-y-auto overflow-x-hidden pr-2 space-y-4 flex flex-col">
             <PanelCard>
               <span className="rounded-full bg-[#e9f8ed] px-3 py-1 text-xs font-bold text-[#25a244]">
                 Free Consultation
@@ -555,7 +555,7 @@ export default function ManagedITSupportPage() {
             </PanelCard>
           </div>
         </aside>
-      </div>
+      </section>
 
       <Footer />
     </main>
