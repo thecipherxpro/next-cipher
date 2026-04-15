@@ -41,7 +41,7 @@ interface ServicePageProps {
   problemDescription: string
   problemPoints: string[]
   includedHeading: string
-  includedItems: { title: string; description: string }[]
+  includedItems: { title: string; description: string; image?: string }[]
   whoItsFor: string[]
   packages: {
     name: string
@@ -256,7 +256,7 @@ export function ServicePageTemplate({
             </div>
           </section>
 
-          {/* What's Included Section */}
+          {/* What's Included — Image Background Cards */}
           <section className="py-12 sm:py-16 lg:py-20 border-t border-foreground/[0.06]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -269,7 +269,7 @@ export function ServicePageTemplate({
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               {includedItems.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -278,13 +278,41 @@ export function ServicePageTemplate({
                   whileInView="show"
                   viewport={{ once: true }}
                   custom={i}
-                  className="p-4 sm:p-5 bg-card rounded-xl border border-foreground/[0.06]"
+                  className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-default"
                 >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
-                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                  {/* Background image */}
+                  {item.image ? (
+                    <Image
+                      src={item.image}
+                      alt=""
+                      fill
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      aria-hidden
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-foreground/80" />
+                  )}
+
+                  {/* Gradient overlay — stronger at bottom */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/50 to-foreground/10" />
+
+                  {/* Teal accent line at top */}
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-primary transform -translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-5">
+                    {/* Icon badge */}
+                    <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center mb-3 backdrop-blur-sm">
+                      <CheckCircle2 className="w-4 h-4 text-primary" />
+                    </div>
+
+                    <h3 className="font-bold text-white text-sm sm:text-base mb-1.5 leading-snug text-balance">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-white/70 leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+                      {item.description}
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-foreground mb-1.5 text-sm sm:text-base">{item.title}</h3>
-                  <p className="text-xs sm:text-sm text-foreground/60 leading-relaxed">{item.description}</p>
                 </motion.div>
               ))}
             </div>
