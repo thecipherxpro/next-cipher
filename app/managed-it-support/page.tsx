@@ -449,6 +449,7 @@ export default function ManagedITSupportPage() {
 
         {/* RIGHT STICKY PANEL */}
         <aside className="lg:sticky lg:top-24 h-fit">
+          <div className="space-y-4">
             <PanelCard>
               <span className="rounded-full bg-[#e9f8ed] px-3 py-1 text-xs font-bold text-[#25a244]">
                 Free Consultation
@@ -553,6 +554,7 @@ export default function ManagedITSupportPage() {
                 ))}
               </div>
             </PanelCard>
+          </div>
         </aside>
       </div>
 
