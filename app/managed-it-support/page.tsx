@@ -146,8 +146,8 @@ export default function ManagedITSupportPage() {
               Built for startups, small businesses, and growing teams across Toronto and the GTA.
             </p>
           </div>
-        </aside>
-      </div>
+        </div>
+      </section>
 
       {/* BODY GRID */}
       <section className="px-6 py-16">
