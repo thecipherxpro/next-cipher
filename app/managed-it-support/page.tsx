@@ -150,10 +150,9 @@ export default function ManagedITSupportPage() {
       </section>
 
       {/* BODY GRID */}
-      <section className="px-6 py-16">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_380px]">
-          {/* LEFT SCROLLABLE CONTENT */}
-          <article className="space-y-12">
+      <section className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
+        {/* LEFT CONTENT */}
+        <div className="space-y-8">
           {/* WHY IT MATTERS */}
           <SectionCard>
             <SectionHeader
@@ -445,11 +444,11 @@ export default function ManagedITSupportPage() {
               </Link>
             </div>
           </section>
-        </article>
+        </div>
 
         {/* RIGHT STICKY PANEL */}
-        <aside className="lg:sticky lg:top-24 h-fit">
-          <div className="space-y-4">
+        <aside className="hidden lg:block">
+          <div className="sticky top-0 h-screen overflow-y-auto overflow-x-hidden pr-2 space-y-4 flex flex-col">
             <PanelCard>
               <span className="rounded-full bg-[#e9f8ed] px-3 py-1 text-xs font-bold text-[#25a244]">
                 Free Consultation
@@ -556,7 +555,7 @@ export default function ManagedITSupportPage() {
             </PanelCard>
           </div>
         </aside>
-      </div>
+      </section>
 
       <Footer />
     </main>
