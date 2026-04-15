@@ -265,8 +265,8 @@ export default function WebAppDevelopmentPage() {
         </div>
 
         {/* RIGHT PANEL */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1 space-y-4">
+        <aside className="hidden lg:block h-screen sticky top-0">
+          <div className="h-full overflow-y-auto pr-2 space-y-4 flex flex-col">
           {/* Consultation */}
           <PanelCard
             heading="Project Review"
