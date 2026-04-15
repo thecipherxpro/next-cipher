@@ -1,8 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, CheckCircle2, Shield, Users, MapPin, Zap, Clock, Globe, Code, Palette, Brain, Smartphone, Monitor, Wrench, ChevronDown } from "lucide-react"
+import { ArrowRight, CheckCircle2, Shield, Users, MapPin, Zap, Clock, Globe, Code, Palette, Brain, Smartphone, Monitor, Wrench, ChevronDown, AlertTriangle } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -178,37 +179,80 @@ export function ServicePageTemplate({
       <div className="lg:grid lg:grid-cols-3 lg:gap-8 relative container-full-wide">
         {/* Left Content - 2 columns */}
         <div className="lg:col-span-2">
-          {/* Problem Points Section */}
-          <section className="py-12 sm:py-16 lg:py-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-8 sm:mb-10"
-            >
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 sm:mb-4">
-                {problemHeading}
-              </h2>
-              <p className="text-sm sm:text-base text-foreground/60 leading-relaxed">
-                {problemDescription}
-              </p>
-            </motion.div>
+          {/* Problem Points — Modern CTA Stripe */}
+          <section className="relative overflow-hidden rounded-2xl my-8 sm:my-12 lg:my-16 bg-foreground">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+              <Image
+                src="/it-problems-stripe.jpg"
+                alt=""
+                fill
+                className="object-cover object-center opacity-20"
+                aria-hidden
+              />
+              {/* Teal overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/95 to-foreground/80" />
+            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              {problemPoints.map((point, i) => (
+            <div className="relative z-10 p-6 sm:p-8 lg:p-10">
+              {/* Top label */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-2 mb-4"
+              >
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/20 border border-primary/30 rounded-full text-[11px] font-semibold text-primary tracking-wide uppercase">
+                  <AlertTriangle className="w-3 h-3" />
+                  Sound Familiar?
+                </span>
+              </motion.div>
+
+              {/* Two-column layout on md+ */}
+              <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-10">
+                {/* Left: Heading + Description + CTA */}
                 <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="show"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  custom={i}
-                  className="flex items-start gap-3 p-4 bg-card rounded-lg border border-foreground/[0.06]"
+                  transition={{ duration: 0.5 }}
+                  className="lg:w-2/5 shrink-0"
                 >
-                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-foreground/80">{point}</span>
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight text-balance">
+                    {problemHeading}
+                  </h2>
+                  <p className="text-sm text-white/60 leading-relaxed mb-6">
+                    {problemDescription}
+                  </p>
+                  <Link
+                    href="#consultation"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-lg"
+                  >
+                    Fix These Issues
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </motion.div>
-              ))}
+
+                {/* Right: Problem points grid */}
+                <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {problemPoints.map((point, i) => (
+                    <motion.div
+                      key={i}
+                      variants={fadeUp}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true }}
+                      custom={i}
+                      className="flex items-start gap-2.5 p-3 rounded-lg bg-white/[0.05] border border-white/10 hover:bg-white/[0.08] transition-colors"
+                    >
+                      <div className="w-5 h-5 rounded-full bg-primary/30 flex items-center justify-center shrink-0 mt-0.5">
+                        <CheckCircle2 className="w-3 h-3 text-primary" />
+                      </div>
+                      <span className="text-xs sm:text-sm text-white/80 leading-snug">{point}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
