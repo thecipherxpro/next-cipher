@@ -265,8 +265,8 @@ export default function AISolutionsPage() {
         </div>
 
         {/* RIGHT PANEL */}
-        <aside className="hidden lg:block h-screen sticky top-0">
-          <div className="h-full overflow-y-auto pr-2 space-y-4 flex flex-col">
+        <aside className="hidden lg:block">
+          <div className="sticky top-0 h-screen overflow-y-auto overflow-x-hidden pr-2 space-y-4 flex flex-col">
           {/* Consultation */}
           <PanelCard
             heading="AI Consultation"
