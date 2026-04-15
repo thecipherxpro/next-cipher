@@ -276,10 +276,10 @@ export function ServicePageTemplate({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-8 sm:mb-10"
+              className="mb-8 sm:mb-10 text-center"
             >
-              <SectionBadge align="left">What&apos;s Included</SectionBadge>
-              <SectionTitle as="h2" align="left">{includedHeading}</SectionTitle>
+              <SectionBadge>What&apos;s Included</SectionBadge>
+              <SectionTitle as="h2">{includedHeading}</SectionTitle>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
@@ -342,10 +342,10 @@ export function ServicePageTemplate({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-6 sm:mb-8"
+              className="mb-6 sm:mb-8 text-center"
             >
-              <SectionBadge align="left">Who It&apos;s For</SectionBadge>
-              <SectionTitle as="h2" align="left" before="Who This " highlight="Service Is For" />
+              <SectionBadge>Who It&apos;s For</SectionBadge>
+              <SectionTitle as="h2" before="Who This " highlight="Service Is For" />
             </motion.div>
 
             <motion.div
@@ -371,11 +371,11 @@ export function ServicePageTemplate({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-8 sm:mb-10"
+              className="mb-8 sm:mb-10 text-center"
             >
-              <SectionBadge align="left">Pricing</SectionBadge>
-              <SectionTitle as="h2" align="left" before="Service " highlight="Packages" />
-              <SectionLead align="left">Choose a package that fits your needs or request a custom quote.</SectionLead>
+              <SectionBadge>Pricing</SectionBadge>
+              <SectionTitle as="h2" before="Service " highlight="Packages" />
+              <SectionLead>Choose a package that fits your needs or request a custom quote.</SectionLead>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -436,10 +436,10 @@ export function ServicePageTemplate({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-8 sm:mb-10"
+              className="mb-8 sm:mb-10 text-center"
             >
-              <SectionBadge align="left">Why Us</SectionBadge>
-              <SectionTitle as="h2" align="left" before="Why Choose " highlight="CipherX" />
+              <SectionBadge>Why Us</SectionBadge>
+              <SectionTitle as="h2" before="Why Choose " highlight="CipherX" />
             </motion.div>
 
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
@@ -472,10 +472,10 @@ export function ServicePageTemplate({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-6 sm:mb-8"
+              className="mb-6 sm:mb-8 text-center"
             >
-              <SectionBadge align="left">Free Consultation</SectionBadge>
-              <SectionTitle as="h2" align="left">{formTitle}</SectionTitle>
+              <SectionBadge>Free Consultation</SectionBadge>
+              <SectionTitle as="h2">{formTitle}</SectionTitle>
             </motion.div>
 
             {formSubmitted ? (
@@ -579,10 +579,10 @@ export function ServicePageTemplate({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-6 sm:mb-8"
+              className="mb-6 sm:mb-8 text-center"
             >
-              <SectionBadge align="left">FAQ</SectionBadge>
-              <SectionTitle as="h2" align="left" before="Frequently Asked " highlight="Questions" />
+              <SectionBadge>FAQ</SectionBadge>
+              <SectionTitle as="h2" before="Frequently Asked " highlight="Questions" />
             </motion.div>
 
             <div className="space-y-3">
@@ -628,10 +628,10 @@ export function ServicePageTemplate({
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-6 sm:mb-8"
+                className="mb-6 sm:mb-8 text-center"
               >
-                <SectionBadge align="left">Explore More</SectionBadge>
-                <SectionTitle as="h2" align="left" before="Related " highlight="Services" />
+                <SectionBadge>Explore More</SectionBadge>
+                <SectionTitle as="h2" before="Related " highlight="Services" />
               </motion.div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
