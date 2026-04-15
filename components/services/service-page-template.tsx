@@ -126,66 +126,144 @@ export function ServicePageTemplate({
 
   return (
     <div className="relative">
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-b from-blue-50/30 to-background overflow-hidden">
-        <div className="container-full-wide">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            className="max-w-3xl"
-          >
-            <motion.span
-              variants={fadeUp}
-              custom={0}
-              className="inline-block px-2.5 py-1 sm:px-3 rounded-full text-[11px] sm:text-xs font-semibold mb-4 sm:mb-6 bg-teal-100 text-teal-700"
-            >
-              {badge}
-            </motion.span>
+      {/* Hero Section — High Conversion */}
+      <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03]">
+          <Image src="/service-hero-bg.jpg" alt="" fill className="object-cover" aria-hidden />
+        </div>
 
-            <motion.h1
-              variants={fadeUp}
-              custom={1}
-              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-[1.15] tracking-tight"
-            >
-              {title}
-            </motion.h1>
+        <div className="container-full-wide relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left: Content */}
+            <motion.div initial="hidden" animate="show">
+              {/* Urgency badge */}
+              <motion.div variants={fadeUp} custom={0} className="flex items-center gap-2 mb-4 sm:mb-5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  {badge}
+                </span>
+                <span className="text-[10px] sm:text-xs text-foreground/50">Limited spots available this month</span>
+              </motion.div>
 
-            <motion.p
-              variants={fadeUp}
-              custom={2}
-              className="text-sm sm:text-base lg:text-lg text-foreground/70 mb-6 sm:mb-8 leading-relaxed max-w-2xl"
-            >
-              {description}
-            </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              custom={3}
-              className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 mb-6 sm:mb-8"
-            >
-              <Link
-                href={primaryCTA.href}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-primary text-primary-foreground rounded-lg text-sm sm:text-base font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-sm"
+              <motion.h1
+                variants={fadeUp}
+                custom={1}
+                className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-foreground mb-4 sm:mb-5 leading-[1.1] tracking-tight text-balance"
               >
-                {primaryCTA.text}
-              </Link>
-              <Link
-                href={secondaryCTA.href}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 border border-foreground/20 text-foreground rounded-lg text-sm sm:text-base font-semibold hover:border-foreground/40 active:scale-[0.98] transition-all"
+                {title}
+              </motion.h1>
+
+              <motion.p
+                variants={fadeUp}
+                custom={2}
+                className="text-sm sm:text-base lg:text-lg text-foreground/65 mb-6 sm:mb-7 leading-relaxed max-w-xl"
               >
-                {secondaryCTA.text}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                {description}
+              </motion.p>
+
+              {/* CTA buttons with microcopy */}
+              <motion.div variants={fadeUp} custom={3} className="mb-6 sm:mb-8">
+                <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 mb-3">
+                  <Link
+                    href={primaryCTA.href}
+                    className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground rounded-xl text-sm sm:text-base font-semibold hover:bg-primary/90 active:scale-[0.98] transition-all shadow-lg shadow-primary/25"
+                  >
+                    {primaryCTA.text}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                  <Link
+                    href={secondaryCTA.href}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-foreground/5 border border-foreground/10 text-foreground rounded-xl text-sm sm:text-base font-semibold hover:bg-foreground/10 active:scale-[0.98] transition-all"
+                  >
+                    {secondaryCTA.text}
+                  </Link>
+                </div>
+                <p className="text-[11px] sm:text-xs text-foreground/45 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3 h-3 text-primary" />
+                  Free consultation - No obligation - Response within 24 hours
+                </p>
+              </motion.div>
+
+              {/* Trust stats bar */}
+              <motion.div
+                variants={fadeUp}
+                custom={4}
+                className="flex flex-wrap items-center gap-4 sm:gap-6 pt-5 sm:pt-6 border-t border-foreground/[0.06]"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-xl sm:text-2xl font-bold text-primary">200+</span>
+                  <span className="text-[11px] sm:text-xs text-foreground/50 leading-tight">Businesses<br />Supported</span>
+                </div>
+                <div className="w-px h-8 bg-foreground/10 hidden sm:block" />
+                <div className="flex items-center gap-2">
+                  <span className="text-xl sm:text-2xl font-bold text-primary">98%</span>
+                  <span className="text-[11px] sm:text-xs text-foreground/50 leading-tight">Client<br />Satisfaction</span>
+                </div>
+                <div className="w-px h-8 bg-foreground/10 hidden sm:block" />
+                <div className="flex items-center gap-2">
+                  <span className="text-xl sm:text-2xl font-bold text-primary">&lt;1hr</span>
+                  <span className="text-[11px] sm:text-xs text-foreground/50 leading-tight">Average<br />Response</span>
+                </div>
+              </motion.div>
             </motion.div>
 
-            <motion.p
-              variants={fadeUp}
-              custom={4}
-              className="text-xs sm:text-sm text-foreground/50"
+            {/* Right: Trust visual card (desktop only) */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="hidden lg:block"
             >
-              {trustLine}
-            </motion.p>
-          </motion.div>
+              <div className="relative bg-card rounded-2xl border border-foreground/[0.06] p-6 shadow-xl">
+                {/* Floating badge */}
+                <div className="absolute -top-3 -right-3 px-3 py-1.5 bg-primary text-white text-[11px] font-bold rounded-full shadow-lg">
+                  Toronto & GTA
+                </div>
+
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <Shield className="w-7 h-7 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground text-lg mb-1">Why Businesses Choose Us</h3>
+                    <p className="text-sm text-foreground/60">{trustLine}</p>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  {[
+                    { icon: Clock, text: "Same-day support for urgent issues" },
+                    { icon: Users, text: "Dedicated team who knows your business" },
+                    { icon: MapPin, text: "On-site visits when needed" },
+                    { icon: Zap, text: "Proactive monitoring prevents problems" },
+                  ].map((item) => (
+                    <div key={item.text} className="flex items-center gap-3 p-3 rounded-lg bg-foreground/[0.02] border border-foreground/[0.04]">
+                      <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
+                        <item.icon className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-sm text-foreground/80">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Mini social proof */}
+                <div className="mt-5 pt-4 border-t border-foreground/[0.06] flex items-center gap-3">
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className="w-8 h-8 rounded-full bg-primary/20 border-2 border-card flex items-center justify-center text-[10px] font-bold text-primary">
+                        {String.fromCharCode(64 + i)}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-foreground/50">
+                    <span className="text-foreground/80 font-medium">Join 200+ businesses</span> already getting reliable IT support
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
