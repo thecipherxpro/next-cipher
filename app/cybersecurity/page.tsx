@@ -1,126 +1,364 @@
-"use client"
-
+import Link from "next/link"
 import { Navigation } from "@/components/platform/navigation"
 import { Footer } from "@/components/platform/footer"
-import { ServicePageTemplate } from "@/components/services/service-page-template"
+import {
+  SectionCard,
+  SectionHeader,
+  InfoCard,
+  StepCard,
+  FAQ,
+  PanelCard,
+  Input,
+} from "@/components/services/service-components"
+
+const includedServices = [
+  {
+    title: "Vulnerability Scanning",
+    text: "Automated and manual scans to identify security weaknesses.",
+  },
+  {
+    title: "Penetration Testing",
+    text: "Authorized security testing to find vulnerabilities before attackers.",
+  },
+  {
+    title: "Security Infrastructure",
+    text: "Firewalls, access controls, and secure network design.",
+  },
+  {
+    title: "Compliance Support",
+    text: "Meet industry standards like PIPEDA, SOC 2, and HIPAA.",
+  },
+  {
+    title: "Incident Response",
+    text: "Fast containment and recovery from security incidents.",
+  },
+  {
+    title: "Employee Training",
+    text: "Security awareness training to prevent social engineering.",
+  },
+]
+
+const problems = [
+  "43% of cyber attacks target small businesses",
+  "60% of businesses close within 6 months of a breach",
+  "Most breaches go undetected for months",
+  "Ransomware attacks increased 150% year-over-year",
+  "Weak passwords remain the #1 security issue",
+  "No clear security incident plan in place",
+]
+
+const packages = [
+  {
+    name: "Security Starter",
+    bestFor: "Essential protection for small teams",
+    points: ["Monthly scans", "Basic firewall setup", "Password policy", "Quarterly reports"],
+  },
+  {
+    name: "Security Growth",
+    bestFor: "Comprehensive protection for growing businesses",
+    points: ["Annual pen testing", "24/7 monitoring", "Incident response plan", "Employee training"],
+    featured: true,
+  },
+  {
+    name: "Security Enterprise",
+    bestFor: "Advanced protection for complex environments",
+    points: ["Quarterly pen testing", "Advanced threat detection", "SIEM setup", "Dedicated advisor"],
+  },
+]
+
+const relatedServices = [
+  {
+    title: "Penetration Testing",
+    text: "Deep-dive security testing.",
+    href: "/penetration-testing",
+  },
+  {
+    title: "Managed IT Support",
+    text: "Reliable IT infrastructure.",
+    href: "/managed-it-support",
+  },
+  {
+    title: "Web App Development",
+    text: "Secure custom applications.",
+    href: "/web-app-development",
+  },
+  {
+    title: "AI Solutions",
+    text: "Smart security automation.",
+    href: "/ai-solutions",
+  },
+]
+
+export const metadata = {
+  title: "Cybersecurity Services Toronto | Small Business Security | CipherX",
+  description:
+    "CipherX provides affordable cybersecurity services for Toronto and GTA small businesses, including security assessments, penetration testing, compliance support, and incident response.",
+}
 
 export default function CybersecurityPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="bg-[#f7f7f2] text-[#10210f]">
       <Navigation />
-      <ServicePageTemplate
-        badge="Cybersecurity Services"
-        title="Protect Your Business with Expert Cybersecurity"
-        description="CipherX helps Toronto and GTA businesses identify vulnerabilities, prevent breaches, and build stronger security infrastructure with practical, affordable cybersecurity services."
-        primaryCTA={{ text: "Free Security Consultation", href: "#consultation" }}
-        secondaryCTA={{ text: "View All Services", href: "/services" }}
-        trustLine="Trusted by 200+ businesses across Toronto and the GTA"
-        problemHeading="Why Small Businesses Are Prime Targets"
-        problemDescription="Many small and mid-size businesses assume they're too small to be targeted by cybercriminals. In reality, they're often the easiest targets due to limited security resources and outdated systems."
-        problemPoints={[
-          "43% of cyber attacks target small businesses",
-          "60% of small businesses close within 6 months of a major breach",
-          "Most breaches go undetected for months",
-          "Ransomware attacks on SMBs increased 150% in the past year",
-          "Weak passwords and unpatched software are the top entry points",
-          "Employee mistakes account for 95% of security incidents",
-        ]}
-        includedHeading="What's Included in Our Cybersecurity Services"
-        includedItems={[
-          { title: "Penetration Testing", description: "Simulate real attacks to find vulnerabilities before hackers do." },
-          { title: "Vulnerability Assessment", description: "Comprehensive scans and analysis of your systems and networks." },
-          { title: "Malware & Threat Analysis", description: "Identify, analyze, and remove malicious software from your systems." },
-          { title: "Security Infrastructure Setup", description: "Build secure networks, firewalls, and access controls." },
-          { title: "Compliance Support", description: "Meet industry standards like PIPEDA, SOC 2, and HIPAA." },
-          { title: "Employee Training", description: "Security awareness training to prevent social engineering attacks." },
-        ]}
-        whoItsFor={[
-          "Small businesses",
-          "Medical clinics",
-          "Law firms",
-          "Financial services",
-          "Retail stores",
-          "E-commerce",
-          "Startups",
-          "Professional offices",
-          "Construction companies",
-          "Real estate agencies",
-        ]}
-        packages={[
-          {
-            name: "Security Starter",
-            price: "$499/mo",
-            description: "Essential protection for small businesses",
-            features: [
-              "Monthly vulnerability scans",
-              "Basic firewall setup",
-              "Password policy setup",
-              "Email security review",
-              "Quarterly security report",
-            ],
-            cta: "Get Started",
-          },
-          {
-            name: "Security Growth",
-            price: "$999/mo",
-            description: "Comprehensive protection for growing businesses",
-            features: [
-              "Everything in Starter",
-              "Annual penetration test",
-              "24/7 monitoring setup",
-              "Incident response plan",
-              "Employee security training",
-              "Compliance documentation",
-            ],
-            cta: "Get Started",
-            popular: true,
-          },
-          {
-            name: "Security Enterprise",
-            price: "Custom",
-            description: "Full-scale security for complex environments",
-            features: [
-              "Everything in Growth",
-              "Quarterly penetration tests",
-              "Advanced threat detection",
-              "SIEM implementation",
-              "Dedicated security advisor",
-              "Custom compliance programs",
-            ],
-            cta: "Contact Us",
-          },
-        ]}
-        whyChoosePoints={[
-          { icon: "Shield", title: "Security-First", description: "Every solution built with security as the foundation." },
-          { icon: "Users", title: "SMB Focused", description: "Pricing and services designed for small businesses." },
-          { icon: "MapPin", title: "Toronto & GTA", description: "Local team that understands your market." },
-          { icon: "Zap", title: "Fast Response", description: "Quick turnaround on assessments and incidents." },
-        ]}
-        formTitle="Request a Free Security Consultation"
-        formFields={[
-          { name: "name", label: "Name", type: "text", required: true },
-          { name: "business", label: "Business Name", type: "text", required: true },
-          { name: "email", label: "Work Email", type: "email", required: true },
-          { name: "phone", label: "Phone", type: "tel", required: true },
-          { name: "employees", label: "Number of Employees", type: "select", options: ["1-10", "11-50", "51-200", "200+"] },
-          { name: "concern", label: "Main Security Concern", type: "select", options: ["General security review", "Penetration testing", "Compliance requirements", "Recent incident", "Other"] },
-          { name: "message", label: "Tell us more about your needs", type: "textarea" },
-        ]}
-        formButtonText="Request Security Consultation"
-        faqs={[
-          { question: "How long does a penetration test take?", answer: "A typical penetration test takes 1-2 weeks depending on the scope and complexity of your systems. We provide detailed findings and remediation recommendations." },
-          { question: "Do you offer ongoing security monitoring?", answer: "Yes, we offer 24/7 security monitoring as part of our Growth and Enterprise packages, or as a standalone service." },
-          { question: "What industries do you work with?", answer: "We work with businesses across all industries, with particular expertise in healthcare, legal, financial services, and retail." },
-          { question: "How much does cybersecurity cost for a small business?", answer: "Our packages start at $499/month for essential protection. We also offer one-time assessments and custom solutions based on your needs." },
-          { question: "What happens if we have a security incident?", answer: "We provide incident response services to help contain, investigate, and recover from security incidents. Response time depends on your service level." },
-        ]}
-        relatedServices={[
-          { title: "Penetration Testing", href: "/penetration-testing" },
-          { title: "Compliance Testing", href: "/compliance-testing" },
-          { title: "Managed IT Support", href: "/managed-it-support" },
-          { title: "AI Solutions", href: "/ai-solutions" },
-        ]}
-      />
+
+      {/* HERO */}
+      <section className="border-b border-black/10 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+          <div className="max-w-4xl">
+            <div className="mb-6 flex flex-wrap gap-3">
+              {["Security First", "Toronto & GTA", "SMB Pricing", "Free Assessment"].map(
+                (badge) => (
+                  <span
+                    key={badge}
+                    className="rounded-full border border-black/10 bg-[#f7f7f2] px-4 py-2 text-sm font-semibold"
+                  >
+                    {badge}
+                  </span>
+                )
+              )}
+            </div>
+
+            <h1 className="max-w-4xl text-4xl font-bold tracking-tight md:text-6xl">
+              Cybersecurity That Protects Toronto Businesses
+            </h1>
+
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-600 md:text-xl">
+              From vulnerability assessments to incident response, CipherX helps you secure your systems, reduce breach risk, and meet compliance requirements.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="#consultation"
+                className="rounded-full bg-[#e74c3c] px-6 py-3 text-center text-sm font-bold text-white hover:opacity-90 transition-opacity"
+              >
+                Request Security Assessment
+              </Link>
+
+              <Link
+                href="#packages"
+                className="rounded-full border border-black/10 bg-white px-6 py-3 text-center text-sm font-bold hover:bg-[#f7f7f2] transition-colors"
+              >
+                View Security Packages
+              </Link>
+            </div>
+
+            <p className="mt-5 text-sm font-medium text-gray-500">
+              Get protected against cyber threats and reduce your security risk.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* MAIN CONTENT */}
+      <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-12">
+        <div className="lg:col-span-2 space-y-12">
+          {/* Why It Matters */}
+          <SectionHeader title="Why Small Businesses Get Targeted" />
+          <div className="grid sm:grid-cols-2 gap-4">
+            {problems.map((problem, i) => (
+              <div key={i} className="p-4 bg-white rounded-lg border border-black/5">
+                <p className="text-sm font-medium text-gray-700">{problem}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* What's Included */}
+          <SectionHeader title="What's Included in Our Services" />
+          <div className="grid sm:grid-cols-2 gap-4">
+            {includedServices.map((service) => (
+              <SectionCard key={service.title} title={service.title} text={service.text} />
+            ))}
+          </div>
+
+          {/* Packages */}
+          <div id="packages">
+            <SectionHeader title="Security Packages" />
+            <div className="grid md:grid-cols-3 gap-6">
+              {packages.map((pkg) => (
+                <div
+                  key={pkg.name}
+                  className={`rounded-xl border p-6 transition-all ${
+                    pkg.featured
+                      ? "bg-gray-900 text-white border-gray-900 ring-2 ring-blue-500"
+                      : "bg-white border-black/10"
+                  }`}
+                >
+                  {pkg.featured && (
+                    <span className="inline-block mb-3 px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">
+                      Most Popular
+                    </span>
+                  )}
+                  <h3 className={`text-xl font-bold mb-1 ${pkg.featured ? "text-white" : ""}`}>
+                    {pkg.name}
+                  </h3>
+                  <p className={`text-sm mb-4 ${pkg.featured ? "text-gray-300" : "text-gray-600"}`}>
+                    {pkg.bestFor}
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    {pkg.points.map((point) => (
+                      <li
+                        key={point}
+                        className={`text-sm flex items-center gap-2 ${
+                          pkg.featured ? "text-gray-300" : "text-gray-700"
+                        }`}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-current" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="#consultation"
+                    className={`block w-full py-2 text-center rounded-lg font-semibold text-sm transition-colors ${
+                      pkg.featured
+                        ? "bg-blue-600 text-white hover:bg-blue-700"
+                        : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                    }`}
+                  >
+                    Get Started
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* FAQs */}
+          <SectionHeader title="Frequently Asked Questions" />
+          <div className="space-y-4">
+            {[
+              {
+                q: "How much does cybersecurity cost?",
+                a: "Our packages start at $499/month. We also offer one-time assessments.",
+              },
+              {
+                q: "How long does a penetration test take?",
+                a: "1-2 weeks depending on scope. Results include detailed recommendations.",
+              },
+              {
+                q: "What if we get breached?",
+                a: "Our incident response service helps contain, investigate, and recover quickly.",
+              },
+              {
+                q: "Are you HIPAA/SOC 2 compliant?",
+                a: "Yes, we help businesses meet industry compliance requirements.",
+              },
+            ].map((item, i) => (
+              <FAQ key={i} question={item.q} answer={item.a} />
+            ))}
+          </div>
+
+          {/* Related Services */}
+          <SectionHeader title="Related Services" />
+          <div className="grid sm:grid-cols-2 gap-4">
+            {relatedServices.map((service) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                className="p-4 bg-white rounded-lg border border-black/5 hover:border-black/20 transition-colors group"
+              >
+                <h4 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {service.title}
+                </h4>
+                <p className="text-sm text-gray-600 mt-1">{service.text}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT PANEL */}
+        <div className="lg:col-span-1 space-y-4 pt-0 lg:pt-0">
+          {/* Consultation */}
+          <PanelCard
+            heading="Request Free Assessment"
+            text="Discuss your security needs with our experts."
+            ctaText="Book Consultation"
+            ctaHref="#consultation"
+            microcopy="No obligation • Response within 24 hours"
+          />
+
+          {/* Why CipherX */}
+          <div className="rounded-lg border border-black/10 bg-white p-5">
+            <h3 className="font-bold text-gray-900 mb-3">Why CipherX</h3>
+            <ul className="space-y-2">
+              {[
+                "Toronto-based security team",
+                "SMB-focused pricing",
+                "Fast incident response",
+                "Compliance-ready approach",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Package Recommendation */}
+          <div className="rounded-lg border border-black/10 bg-white p-5">
+            <p className="text-xs font-semibold text-blue-600 mb-2">RECOMMENDED</p>
+            <h3 className="font-bold text-gray-900 mb-1">Security Growth</h3>
+            <p className="text-sm text-gray-600 mb-3">Most popular for small businesses</p>
+            <Link
+              href="#packages"
+              className="block w-full text-center py-2 border border-blue-600 text-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-50 transition-colors"
+            >
+              View Details
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* CONSULTATION FORM */}
+      <section id="consultation" className="border-t border-black/10 bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+          <SectionHeader title="Request Your Security Assessment" />
+          <div className="mt-8 mx-auto max-w-2xl">
+            <form className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <Input label="Name" type="text" required />
+                <Input label="Business" type="text" required />
+                <Input label="Email" type="email" required />
+                <Input label="Phone" type="tel" required />
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <select
+                  className="w-full px-4 py-2 border border-black/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                >
+                  <option value="">Select team size</option>
+                  <option>1-10</option>
+                  <option>11-50</option>
+                  <option>51-200</option>
+                  <option>200+</option>
+                </select>
+                <select
+                  className="w-full px-4 py-2 border border-black/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                >
+                  <option value="">Main concern</option>
+                  <option>General security review</option>
+                  <option>Penetration testing</option>
+                  <option>Compliance requirements</option>
+                  <option>Recent incident</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <textarea
+                className="w-full px-4 py-2 border border-black/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows={4}
+                placeholder="Tell us about your security needs..."
+              />
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+              >
+                Request Assessment
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   )
