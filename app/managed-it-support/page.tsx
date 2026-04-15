@@ -146,11 +146,11 @@ export default function ManagedITSupportPage() {
               Built for startups, small businesses, and growing teams across Toronto and the GTA.
             </p>
           </div>
-        </div>
+        </aside>
       </section>
 
       {/* BODY GRID */}
-      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-10 lg:grid-cols-[1fr_360px] lg:px-8">
+      <section className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
         {/* LEFT CONTENT */}
         <div className="space-y-8">
           {/* WHY IT MATTERS */}
@@ -448,7 +448,7 @@ export default function ManagedITSupportPage() {
 
         {/* RIGHT STICKY PANEL */}
         <aside className="hidden lg:block">
-          <div className="sticky top-24 space-y-4">
+          <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1 space-y-4">
             <PanelCard>
               <span className="rounded-full bg-[#e9f8ed] px-3 py-1 text-xs font-bold text-[#25a244]">
                 Free Consultation
