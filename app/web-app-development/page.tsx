@@ -265,8 +265,8 @@ export default function WebAppDevelopmentPage() {
         </div>
 
         {/* RIGHT PANEL */}
-        <aside className="hidden lg:block self-start pb-96">
-          <div className="sticky top-24 space-y-4 mb-18">
+        <aside className="hidden lg:block">
+          <div className="sticky top-24 space-y-4">
           {/* Consultation */}
           <PanelCard
             heading="Project Review"
@@ -305,6 +305,7 @@ export default function WebAppDevelopmentPage() {
             >
               View Details
             </Link>
+          </div>
           </div>
         </aside>
       </section>
