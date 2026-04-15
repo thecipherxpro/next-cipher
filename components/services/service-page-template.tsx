@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle2, Shield, Users, MapPin, Zap, Clock, Globe, Cod
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
+import { SectionBadge, SectionTitle, SectionLead } from "@/components/ui/section-heading"
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Shield,
@@ -277,9 +278,8 @@ export function ServicePageTemplate({
               viewport={{ once: true }}
               className="mb-8 sm:mb-10"
             >
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-                {includedHeading}
-              </h2>
+              <SectionBadge align="left">What&apos;s Included</SectionBadge>
+              <SectionTitle as="h2" align="left">{includedHeading}</SectionTitle>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
@@ -344,9 +344,8 @@ export function ServicePageTemplate({
               viewport={{ once: true }}
               className="mb-6 sm:mb-8"
             >
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 sm:mb-4">
-                Who This Service Is For
-              </h2>
+              <SectionBadge align="left">Who It&apos;s For</SectionBadge>
+              <SectionTitle as="h2" align="left" before="Who This " highlight="Service Is For" />
             </motion.div>
 
             <motion.div
@@ -374,12 +373,9 @@ export function ServicePageTemplate({
               viewport={{ once: true }}
               className="mb-8 sm:mb-10"
             >
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 sm:mb-4">
-                Service Packages
-              </h2>
-              <p className="text-sm sm:text-base text-foreground/60">
-                Choose a package that fits your needs or request a custom quote.
-              </p>
+              <SectionBadge align="left">Pricing</SectionBadge>
+              <SectionTitle as="h2" align="left" before="Service " highlight="Packages" />
+              <SectionLead align="left">Choose a package that fits your needs or request a custom quote.</SectionLead>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -442,9 +438,8 @@ export function ServicePageTemplate({
               viewport={{ once: true }}
               className="mb-8 sm:mb-10"
             >
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-                Why Choose CipherX
-              </h2>
+              <SectionBadge align="left">Why Us</SectionBadge>
+              <SectionTitle as="h2" align="left" before="Why Choose " highlight="CipherX" />
             </motion.div>
 
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
@@ -479,9 +474,8 @@ export function ServicePageTemplate({
               viewport={{ once: true }}
               className="mb-6 sm:mb-8"
             >
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-                {formTitle}
-              </h2>
+              <SectionBadge align="left">Free Consultation</SectionBadge>
+              <SectionTitle as="h2" align="left">{formTitle}</SectionTitle>
             </motion.div>
 
             {formSubmitted ? (
@@ -587,9 +581,8 @@ export function ServicePageTemplate({
               viewport={{ once: true }}
               className="mb-6 sm:mb-8"
             >
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-                Frequently Asked Questions
-              </h2>
+              <SectionBadge align="left">FAQ</SectionBadge>
+              <SectionTitle as="h2" align="left" before="Frequently Asked " highlight="Questions" />
             </motion.div>
 
             <div className="space-y-3">
@@ -637,9 +630,8 @@ export function ServicePageTemplate({
                 viewport={{ once: true }}
                 className="mb-6 sm:mb-8"
               >
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-                  Related Services
-                </h2>
+                <SectionBadge align="left">Explore More</SectionBadge>
+                <SectionTitle as="h2" align="left" before="Related " highlight="Services" />
               </motion.div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
