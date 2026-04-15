@@ -219,9 +219,11 @@ export default function WebsiteDevelopmentPage() {
                     Get Started
                   </Link>
                 </div>
-              ))}
-            </div>
-          </div>
+                ))}
+              </div>
+            </PanelCard>
+        </aside>
+      </div>
 
           {/* FAQs */}
           <SectionHeader title="Frequently Asked Questions" />

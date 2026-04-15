@@ -553,7 +553,6 @@ export default function ManagedITSupportPage() {
                 ))}
               </div>
             </PanelCard>
-          </div>
         </aside>
       </div>
 
