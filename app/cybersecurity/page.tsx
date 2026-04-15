@@ -149,8 +149,10 @@ export default function CybersecurityPage() {
       </section>
 
       {/* BODY GRID */}
-      <section className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
-        <div className="space-y-8">
+      <section className="px-6 py-16">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_380px]">
+          {/* LEFT SCROLLABLE CONTENT */}
+          <article className="space-y-12">
           {/* Why It Matters */}
           <SectionHeader title="Why Small Businesses Get Targeted" />
           <div className="grid sm:grid-cols-2 gap-4">
@@ -262,11 +264,11 @@ export default function CybersecurityPage() {
               </Link>
             ))}
           </div>
-        </div>
+        </article>
 
-        {/* RIGHT PANEL */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-0 h-screen overflow-y-auto overflow-x-hidden pr-2 space-y-4 flex flex-col">
+        {/* RIGHT STICKY PANEL */}
+        <aside className="lg:sticky lg:top-24 h-fit">
+          <div className="space-y-4">
           {/* Consultation */}
           <PanelCard
             heading="Request Free Assessment"
@@ -307,7 +309,7 @@ export default function CybersecurityPage() {
             </Link>
           </div>
         </aside>
-      </section>
+      </div>
 
       {/* CONSULTATION FORM */}
       <section id="consultation" className="border-t border-black/10 bg-white">
