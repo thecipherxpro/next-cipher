@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, CheckCircle2, Shield, Users, MapPin, Zap, Clock, Globe, Code, Palette, Brain, Smartphone, Monitor, Wrench, ChevronDown, AlertTriangle } from "lucide-react"
+import { ArrowRight, CheckCircle2, Shield, Users, MapPin, Zap, Clock, Globe, Code, Palette, Brain, Smartphone, Monitor, Wrench, ChevronDown, AlertTriangle, Headphones, HardDrive, Wifi, PackageCheck, DatabaseBackup, Handshake, Server, Lock, BarChart2, FileText, Network, Settings } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
@@ -19,6 +19,19 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Smartphone,
   Monitor,
   Wrench,
+  Headphones,
+  HardDrive,
+  Wifi,
+  PackageCheck,
+  DatabaseBackup,
+  Handshake,
+  Server,
+  Lock,
+  BarChart2,
+  FileText,
+  Network,
+  Settings,
+  CheckCircle2,
 }
 
 const fadeUp = {
@@ -41,7 +54,7 @@ interface ServicePageProps {
   problemDescription: string
   problemPoints: string[]
   includedHeading: string
-  includedItems: { title: string; description: string; image?: string }[]
+  includedItems: { title: string; description: string; image?: string; icon?: string }[]
   whoItsFor: string[]
   packages: {
     name: string
@@ -256,7 +269,7 @@ export function ServicePageTemplate({
             </div>
           </section>
 
-          {/* What's Included — Image Background Cards */}
+          {/* What's Included — Bento Image Cards */}
           <section className="py-12 sm:py-16 lg:py-20 border-t border-foreground/[0.06]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -269,52 +282,57 @@ export function ServicePageTemplate({
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {includedItems.map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  custom={i}
-                  className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-default"
-                >
-                  {/* Background image */}
-                  {item.image ? (
-                    <Image
-                      src={item.image}
-                      alt=""
-                      fill
-                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                      aria-hidden
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-foreground/80" />
-                  )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              {includedItems.map((item, i) => {
+                const Icon = item.icon ? (iconMap[item.icon] || CheckCircle2) : CheckCircle2
+                // Alternate tall card for first and last items for bento feel
+                const isTall = i === 0 || i === includedItems.length - 1
+                return (
+                  <motion.div
+                    key={item.title}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    custom={i}
+                    className={`group relative overflow-hidden rounded-2xl cursor-default ${isTall ? "sm:row-span-2 aspect-[3/4] sm:aspect-auto" : "aspect-[4/3]"}`}
+                  >
+                    {/* Background image */}
+                    {item.image ? (
+                      <Image
+                        src={item.image}
+                        alt=""
+                        fill
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                        aria-hidden
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-foreground" />
+                    )}
 
-                  {/* Gradient overlay — stronger at bottom */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/50 to-foreground/10" />
+                    {/* Dark gradient overlay - heavier at bottom */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 group-hover:from-black/95 transition-all duration-300" />
 
-                  {/* Teal accent line at top */}
-                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-primary transform -translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                    {/* Left teal border accent */}
+                    <div className="absolute left-0 top-4 bottom-4 w-0.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-5">
-                    {/* Icon badge */}
-                    <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center mb-3 backdrop-blur-sm">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
+                    {/* Content anchored to bottom */}
+                    <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6">
+                      {/* Solid colored icon */}
+                      <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center mb-3 shadow-lg">
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+
+                      <h3 className="font-bold text-white text-sm sm:text-base leading-snug mb-1.5 text-balance">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-white/65 leading-relaxed">
+                        {item.description}
+                      </p>
                     </div>
-
-                    <h3 className="font-bold text-white text-sm sm:text-base mb-1.5 leading-snug text-balance">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-white/70 leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
-                      {item.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                )
+              })}
             </div>
           </section>
 

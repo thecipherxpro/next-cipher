@@ -27,12 +27,12 @@ export default function ManagedITPage() {
         ]}
         includedHeading="What's Included in Managed IT Support"
         includedItems={[
-          { title: "Help Desk & Remote Support", description: "Get fast answers and remote fixes for everyday IT issues.", image: "/included/help-desk.jpg" },
-          { title: "Hardware Setup & Repairs", description: "Computers, printers, servers, and equipment handled.", image: "/included/hardware.jpg" },
-          { title: "Network Setup & Maintenance", description: "Reliable WiFi, wired networks, and connectivity.", image: "/included/network.jpg" },
-          { title: "Software Installation & Licensing", description: "Keep your software updated, licensed, and working.", image: "/included/software.jpg" },
-          { title: "Data Backup & Recovery", description: "Protect your business data with automated backups.", image: "/included/backup.jpg" },
-          { title: "Vendor Coordination", description: "We handle your tech vendors so you don't have to.", image: "/included/vendor.jpg" },
+          { title: "Help Desk & Remote Support", description: "Get fast answers and remote fixes for everyday IT issues.", image: "/included/help-desk.jpg", icon: "Headphones" },
+          { title: "Hardware Setup & Repairs", description: "Computers, printers, servers, and equipment handled.", image: "/included/hardware.jpg", icon: "HardDrive" },
+          { title: "Network Setup & Maintenance", description: "Reliable WiFi, wired networks, and connectivity.", image: "/included/network.jpg", icon: "Wifi" },
+          { title: "Software Installation & Licensing", description: "Keep your software updated, licensed, and working.", image: "/included/software.jpg", icon: "PackageCheck" },
+          { title: "Data Backup & Recovery", description: "Protect your business data with automated backups.", image: "/included/backup.jpg", icon: "DatabaseBackup" },
+          { title: "Vendor Coordination", description: "We handle your tech vendors so you don't have to.", image: "/included/vendor.jpg", icon: "Handshake" },
         ]}
         whoItsFor={[
           "Small offices",
