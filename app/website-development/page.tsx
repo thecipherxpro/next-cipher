@@ -148,9 +148,10 @@ export default function WebsiteDevelopmentPage() {
         </div>
       </section>
 
-      {/* BODY GRID */}
-      <section className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
-        <div className="space-y-8">
+      {/* BODY: 2-COL FLEX */}
+      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row lg:items-start">
+        {/* LEFT — scrollable content */}
+        <div className="min-w-0 flex-1 space-y-8 px-4 py-10 lg:px-8">
           {/* Why It Matters */}
           <SectionHeader title="Your Website Should Work Harder" />
           <div className="grid sm:grid-cols-2 gap-4">
@@ -264,9 +265,9 @@ export default function WebsiteDevelopmentPage() {
           </div>
         </div>
 
-        {/* RIGHT PANEL */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-24 space-y-4">
+        {/* RIGHT — static panel */}
+        <aside className="hidden lg:block w-[380px] shrink-0 border-l border-black/10">
+          <div className="sticky top-24 space-y-4 px-6 py-10">
           {/* Consultation */}
           <PanelCard
             heading="Website Consultation"
@@ -308,7 +309,7 @@ export default function WebsiteDevelopmentPage() {
           </div>
           </div>
         </aside>
-      </section>
+      </div>
 
       {/* CONSULTATION FORM */}
       <section id="consultation" className="border-t border-black/10 bg-white">
