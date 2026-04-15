@@ -146,8 +146,6 @@ export default function ManagedITSupportPage() {
               Built for startups, small businesses, and growing teams across Toronto and the GTA.
             </p>
           </div>
-        </aside>
-      </section>
 
       {/* BODY GRID */}
       <section className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">

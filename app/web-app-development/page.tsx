@@ -145,8 +145,6 @@ export default function WebAppDevelopmentPage() {
               40+ web applications powering Toronto businesses.
             </p>
           </div>
-        </div>
-      </section>
 
       {/* BODY GRID */}
       <section className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
