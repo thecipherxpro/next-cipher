@@ -1,6 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { SectionBadge, SectionTitle, SectionLead, sectionHeadingSpacing } from "@/components/ui/section-heading"
+import { cn } from "@/lib/utils"
 
 const testimonials = [
   {
@@ -40,14 +42,11 @@ export function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10 sm:mb-12"
+          className={cn(sectionHeadingSpacing, "text-center")}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-semibold mb-3.5 text-foreground tracking-[-0.025em]">
-            Trusted by security teams
-          </h2>
-          <p className="text-[15px] text-muted-foreground max-w-md mx-auto">
-            See what our clients say about working with CipherX.
-          </p>
+          <SectionBadge>Client Reviews</SectionBadge>
+          <SectionTitle before="Trusted by " highlight="Businesses" />
+          <SectionLead>See what our clients say about working with CipherX.</SectionLead>
         </motion.div>
 
         {/* Grid */}

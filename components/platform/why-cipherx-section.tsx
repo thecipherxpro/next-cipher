@@ -1,176 +1,181 @@
 "use client"
 
-import { ArrowRight } from "lucide-react"
+import {
+  ArrowRight,
+  ShieldAlert,
+  ServerCrash,
+  Globe,
+  Layers,
+  CheckCircle2,
+  Users,
+} from "lucide-react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import type { LucideIcon } from "lucide-react"
 import {
   SectionBadge,
-  SectionLead,
-  SectionTitle,
 } from "@/components/ui/section-heading"
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-}
-
-const problems = [
+const problems: { number: string; icon: LucideIcon; title: string; description: string }[] = [
   {
     number: "01",
+    icon: ShieldAlert,
     title: "Security Gaps",
-    description: "Weak infrastructure, poor backups, and hidden vulnerabilities can put your business at risk.",
+    description:
+      "Weak infrastructure, poor backups, and hidden vulnerabilities put your business at risk every day.",
   },
   {
     number: "02",
-    title: "Costly IT Problems",
-    description: "Recurring IT issues waste time, interrupt work, and hurt productivity.",
+    icon: ServerCrash,
+    title: "Costly IT Downtime",
+    description:
+      "Recurring IT issues waste time, interrupt work, and quietly erode your bottom line.",
   },
   {
     number: "03",
+    icon: Globe,
     title: "Weak Online Presence",
-    description: "An outdated website or missing digital systems can cost you customers.",
+    description:
+      "An outdated website or missing digital systems actively costs you customers and credibility.",
   },
   {
     number: "04",
+    icon: Layers,
     title: "Too Many Vendors",
-    description: "Using separate providers for IT, security, development, and design creates delays and confusion.",
+    description:
+      "Juggling separate providers for IT, security, and development creates delays, gaps, and confusion.",
   },
 ]
 
-const benefits = [
+const stats = [
   {
-    title: "1 Team",
-    description: "For security, IT, websites, and digital systems.",
+    icon: Users,
+    value: "1 Team",
+    label: "Security, IT, websites & digital systems — all under one roof.",
   },
   {
-    title: "Less Delay",
-    description: "Fewer vendors, fewer gaps, and clearer execution.",
+    icon: CheckCircle2,
+    value: "No Gaps",
+    label: "Fewer handoffs, clearer accountability, faster execution.",
   },
 ]
 
 export function WhyBusinessesNeedSection() {
   return (
-    <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-b from-accent/5 to-background">
-      <div className="w-full container-full-wide">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 xl:gap-20 items-start">
-          {/* Left column */}
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="flex flex-col"
-          >
-            {/* Badge */}
-            <motion.div variants={fadeUp} custom={0}>
-              <SectionBadge align="left" className="mb-4 sm:mb-5">
-                Problem / value
-              </SectionBadge>
-            </motion.div>
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 bg-background overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-primary/[0.025]" aria-hidden />
 
-            <motion.div variants={fadeUp} custom={1}>
-              <SectionTitle align="left" className="mb-5 max-w-lg sm:mb-6">
-                Too Many Businesses Are Still Left Vulnerable
-              </SectionTitle>
-            </motion.div>
+      <div className="container-full-wide relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-start">
 
-            <motion.div variants={fadeUp} custom={2}>
-              <SectionLead align="left" className="mt-3 max-w-lg mb-5 sm:mt-4 sm:mb-6">
-                Many small businesses delay proper security, IT support, websites, and digital systems because
-                providers are too costly, too limited, or too fragmented. That leads to downtime, weak protection,
-                outdated systems, and missed growth.
-              </SectionLead>
-            </motion.div>
+          {/* ── Left column ───────────────────────────────────────────── */}
+          <div className="flex flex-col">
+            <SectionBadge align="left">Problem / Value</SectionBadge>
 
-            {/* Value prop */}
-            <motion.p
-              variants={fadeUp}
-              custom={3}
-              className="text-sm sm:text-base md:text-lg font-semibold text-foreground mb-8 sm:mb-10"
-            >
-              CipherX gives your business one team to help secure, support, and build what you actually need.
-            </motion.p>
+            <div className="mt-2 max-w-[500px] text-balance">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
+                Too Many Businesses Are Still Left{" "}
+                <span className="relative inline-block">
+                  <span className="absolute inset-0 -z-10 rounded-lg bg-primary px-3 py-1 sm:px-4 sm:py-2" aria-hidden />
+                  <span className="relative text-white">Vulnerable</span>
+                </span>
+              </h2>
+            </div>
+
+            <p className="mt-4 max-w-[460px] text-sm sm:text-[0.9375rem] leading-relaxed text-muted-foreground">
+              Most small businesses delay proper security, IT support, and digital systems because providers are
+              too costly, too limited, or too fragmented — leading to downtime, weak protection, and missed growth.
+            </p>
+
+            {/* Value callout */}
+            <div className="mt-6 flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 px-5 py-4">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+              <p className="text-sm sm:text-[0.9375rem] font-semibold text-foreground leading-snug">
+                CipherX gives your business one team to secure, support, and build exactly what you need.
+              </p>
+            </div>
 
             {/* CTAs */}
-            <motion.div
-              variants={fadeUp}
-              custom={4}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-12"
-            >
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-accent text-accent-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-md"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-section-coral px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 active:scale-[0.98]"
               >
-                Get a Business Consultation
+                Get a Free Consultation
               </Link>
               <Link
                 href="#services"
-                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 border border-border text-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold hover:bg-secondary active:scale-[0.98] transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-secondary active:scale-[0.98]"
               >
                 View All Services
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
-            </motion.div>
+            </div>
 
-            {/* Benefit cards */}
-            <motion.div
-              variants={fadeUp}
-              custom={5}
-              className="grid grid-cols-2 gap-4 sm:gap-5"
-            >
-              {benefits.map((benefit) => (
-                <div
-                  key={benefit.title}
-                  className="p-4 sm:p-5 md:p-6 border border-border rounded-xl sm:rounded-2xl bg-white"
-                >
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-1 sm:mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-snug">{benefit.description}</p>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
+            {/* Stat cards */}
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4">
+              {stats.map((s) => {
+                const Icon = s.icon
+                return (
+                  <div
+                    key={s.value}
+                    className="flex flex-col gap-3 rounded-xl border border-border bg-card p-5 sm:p-6"
+                  >
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+                      <Icon className="h-4 w-4 text-primary" strokeWidth={1.75} />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <span className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+                        {s.value}
+                      </span>
+                      <span className="text-xs sm:text-sm leading-snug text-muted-foreground">
+                        {s.label}
+                      </span>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
 
-          {/* Right column: Problem cards */}
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="relative flex flex-col gap-5 sm:gap-6 lg:gap-7"
-          >
-            {/* Vertical line indicator */}
-            <div className="absolute left-7 sm:left-8 lg:left-9 top-4 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-transparent hidden md:block" />
+          {/* ── Right column: Vertical stepper ───────────────────────── */}
+          <div className="relative flex flex-col">
+            {problems.map((problem, index) => {
+              const Icon = problem.icon
+              const isLast = index === problems.length - 1
+              return (
+                <div key={problem.number} className="relative flex gap-5">
+                  {/* Stepper rail column */}
+                  <div className="relative flex flex-col items-center">
+                    {/* Icon bubble */}
+                    <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-border bg-card shadow-sm">
+                      <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
+                    </div>
+                    {/* Connector line */}
+                    {!isLast && (
+                      <div className="mt-1 w-px flex-1 bg-border/50 mb-1" aria-hidden />
+                    )}
+                  </div>
 
-            {problems.map((problem, index) => (
-              <motion.div
-                key={problem.number}
-                variants={fadeUp}
-                custom={index + 6}
-                className="relative flex gap-4 sm:gap-5 lg:gap-6 group"
-              >
-                {/* Numbered circle */}
-                <div className="relative flex-shrink-0 pt-0.5">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full bg-accent flex items-center justify-center font-bold text-base sm:text-lg lg:text-xl text-accent-foreground shadow-lg flex-shrink-0">
-                    {problem.number}
+                  {/* Card content */}
+                  <div className={`flex-1 pb-6 ${isLast ? "pb-0" : ""}`}>
+                    {/* Step label + number */}
+                    <div className="flex items-center gap-2 mb-2 mt-3">
+                      <span className="step-number">Step {problem.number}</span>
+                    </div>
+                    <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 transition-colors hover:border-primary/25">
+                      <h3 className="text-base sm:text-[1.0625rem] font-bold tracking-tight text-foreground mb-1.5">
+                        {problem.title}
+                      </h3>
+                      <p className="text-sm sm:text-[0.9375rem] leading-relaxed text-muted-foreground">
+                        {problem.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
+              )
+            })}
+          </div>
 
-                {/* Card content */}
-                <div className="flex-1 pt-1 sm:pt-2">
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-2 sm:mb-3">
-                    {problem.title}
-                  </h3>
-                  <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
-                    {problem.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </div>
     </section>

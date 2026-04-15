@@ -10,12 +10,11 @@ import {
 } from "@/components/ui/section-heading"
 import { cn } from "@/lib/utils"
 
-/** Half-width stacked cards (sm+): one shared height so paired rows align. */
-const TOP_SERVICE_CARD_GRID_H = "sm:h-[620px]"
-/** Full-width horizontal cards (sm+): shared row + media height. */
-const WIDE_SERVICE_CARD_GRID_H = "sm:h-[400px]"
-const WIDE_SERVICE_MEDIA_H =
-  "bg-muted/20 sm:h-[400px] sm:max-h-[400px] sm:min-h-0"
+/** Half-width stacked cards (sm+): shared height so paired rows align. */
+const TOP_SERVICE_CARD_GRID_H = "sm:h-[600px]"
+/** Full-width horizontal cards (sm+): shared row height. */
+const WIDE_SERVICE_CARD_GRID_H = "sm:h-[420px]"
+const WIDE_SERVICE_MEDIA_H = "sm:h-[420px] sm:max-h-[420px] sm:min-h-0"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -56,14 +55,9 @@ const services: Array<{
     secondaryCTA: { text: "Get Security Consultation", href: "#consultation" },
     layout: "left-content",
     wide: true,
-    contentClassName:
-      "sm:h-full sm:w-[642px] sm:max-w-[642px] sm:items-start sm:justify-center sm:px-0 sm:py-0 xl:px-0",
     innerGridClassName: WIDE_SERVICE_CARD_GRID_H,
     imageFigureClassName: WIDE_SERVICE_MEDIA_H,
-    imageShellClassName: "sm:max-h-[400px]",
-    imageMediaClassName:
-      "ml-[11px] flex flex-col items-end justify-center p-2 sm:p-4",
-    heroImageClassName: "mx-[-14px] my-[30px] px-[39px] py-0",
+    imageShellClassName: "sm:max-h-[420px]",
     heroImage: {
       src: "/services-cybersecurity.png",
       alt: "Cybersecurity illustration with shield, lock, and digital protection visuals",
@@ -112,9 +106,8 @@ const services: Array<{
     layout: "left-content",
     wide: true,
     innerGridClassName: WIDE_SERVICE_CARD_GRID_H,
-    contentClassName: "sm:h-full sm:items-start sm:justify-center sm:py-0",
     imageFigureClassName: WIDE_SERVICE_MEDIA_H,
-    imageShellClassName: "sm:max-h-[400px]",
+    imageShellClassName: "sm:max-h-[420px]",
     heroImage: {
       src: "/App.png",
       alt: "App development illustration with mobile and web app visuals",
@@ -130,6 +123,12 @@ const services: Array<{
     secondaryCTA: { text: "Ask About AI", href: "#consultation" },
     layout: "top-content",
     innerGridClassName: TOP_SERVICE_CARD_GRID_H,
+    heroImage: {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Copy%20of%20Untitled%20%28415%20x%20393%20px%29%20%285%29-FF8IXMyzjfdCijNu1QuoC8hOfdmN5Y.png",
+      alt: "AI Solutions illustration with AI icons and chat interface",
+      width: 415,
+      height: 393,
+    },
   },
   {
     title: "Creative Services",
@@ -173,7 +172,7 @@ export function ServicesSection() {
         {/*
           sm+: full-width rows use horizontal layout (text | media). Half-width cards use stacked layout (media on top, content below).
         */}
-        <div className="grid grid-cols-1 items-stretch gap-x-[59px] gap-y-[33px] sm:grid-cols-2">
+        <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
           {services.map((service, i) => (
             <motion.div
               key={service.title}

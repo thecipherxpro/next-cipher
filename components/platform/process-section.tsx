@@ -1,7 +1,4 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { MessageSquare, Search, ClipboardList, Wrench, ArrowRight } from "lucide-react"
+import { MessageSquare, ScanSearch, ClipboardList, Wrench, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import {
   SectionBadge,
@@ -13,89 +10,88 @@ import { cn } from "@/lib/utils"
 
 const steps = [
   {
-    number: "1",
+    number: "01",
     title: "Talk",
-    description: "We learn about your business and goals.",
+    description: "We learn about your business, your goals, and the challenges you face right now.",
     icon: MessageSquare,
   },
   {
-    number: "2",
+    number: "02",
     title: "Review",
-    description: "We identify gaps, risks, or missing systems.",
-    icon: Search,
+    description: "We identify gaps, risks, and missing systems that could be holding you back.",
+    icon: ScanSearch,
   },
   {
-    number: "3",
+    number: "03",
     title: "Recommend",
-    description: "We match you with the right package or custom solution.",
+    description: "We match you with the right package or build a custom solution for your stage and budget.",
     icon: ClipboardList,
   },
   {
-    number: "4",
+    number: "04",
     title: "Deliver",
-    description: "We build, secure, support, and improve your systems.",
+    description: "We build, secure, support, and continuously improve your systems over time.",
     icon: Wrench,
   },
 ]
 
 export function ProcessSection() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-background">
+    <section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-background overflow-hidden">
       <div className="w-full container-full-wide">
+
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className={cn(sectionHeadingSpacing, "text-center")}
-        >
+        <div className={cn(sectionHeadingSpacing, "text-center")}>
           <SectionBadge>Our process</SectionBadge>
           <SectionTitle before="How It " highlight="Works" />
-          <SectionLead className="mb-6 max-w-xl sm:mb-8">
-            We keep the process simple from first contact to final setup.
+          <SectionLead className="mb-7 max-w-xl sm:mb-9">
+            We keep the process simple — from first contact to full delivery.
           </SectionLead>
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-accent text-accent-foreground rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-md"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-section-coral px-6 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 active:scale-[0.98]"
           >
             Start the Process
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            <ArrowRight className="h-4 w-4" />
           </Link>
-        </motion.div>
+        </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-          {steps.map((step, i) => {
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
+
+          {/* Desktop connector line */}
+          <div
+            className="pointer-events-none absolute top-[2.375rem] left-[calc(12.5%+1.25rem)] right-[calc(12.5%+1.25rem)] hidden h-px bg-border lg:block"
+            aria-hidden
+          />
+
+          {steps.map((step) => {
             const Icon = step.icon
             return (
-              <motion.div
+              <div
                 key={step.number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.09 }}
-                className="relative flex flex-col p-5 sm:p-6 md:p-7 rounded-2xl sm:rounded-3xl border border-border bg-card"
+                className="relative flex flex-col gap-5 rounded-2xl border border-border bg-card p-6 sm:p-7 transition-colors hover:border-primary/30"
               >
-                {/* Step number + icon */}
-                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-                  <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-accent text-accent-foreground text-sm sm:text-base font-bold flex items-center justify-center shrink-0">
+                {/* Icon + step number row */}
+                <div className="flex items-center justify-between">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                    <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
+                  </div>
+                  <span className="text-xs font-bold tracking-widest text-muted-foreground/50 uppercase">
                     {step.number}
                   </span>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-accent/10 flex items-center justify-center">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
-                  </div>
                 </div>
-                <h3 className="text-base sm:text-lg md:text-xl font-bold text-foreground mb-2 sm:mb-3">{step.title}</h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{step.description}</p>
 
-                {/* Connector arrow */}
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 -right-3 z-10">
-                    <ArrowRight className="w-5 h-5 text-border" />
-                  </div>
-                )}
-              </motion.div>
+                {/* Text */}
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="text-base sm:text-[1.0625rem] font-bold tracking-tight text-foreground">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
             )
           })}
         </div>
